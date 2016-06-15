@@ -52,11 +52,16 @@ if __name__ == '__main__':
     content_table = ''.join([CONTENT_TEMPLATE.format(page=page)
                              for page in xrange(1, page_number + 1)])
 
+    torah_width = PAGE_WIDTH * 2
+    torah_height = PAGE_HEIGHT + ANCHOR_HEIGHT * 2
+
     with open(TORAH_HEMPLATE_PATH, 'r') as t:
         template = t.read()
         with open(OUTPUT, 'w') as o:
-            o.write(template.format(torah_width=PAGE_WIDTH * 2,
-                                    torah_height=PAGE_HEIGHT + ANCHOR_HEIGHT * 2,
+            o.write(template.format(torah_width=torah_width,
+                                    margin_left=-torah_width / 2,
+                                    torah_height=torah_height,
+                                    margin_top=-torah_height / 2,
                                     page_height=PAGE_HEIGHT,
                                     anchor_height=ANCHOR_HEIGHT,
                                     main_row=main_row,

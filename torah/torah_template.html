@@ -1,15 +1,24 @@
 <html>
- <body>
-  <div style="width: {torah_width}px; height: {torah_height}px; overflow: scroll;">
+ <title>Exodus 2016 Torah</title>
+ <body bgcolor="black">
+  <div style="width: {torah_width}px; height: {torah_height}px; position: absolute; margin-left: {margin_left}px; left:50%; top:50%; margin-top: {margin_top}px; overflow: scroll;">
    <table border="0" cellspacing="0" cellpadding="0">
-    <tr height="{page_height}">
-     {main_row}
-    </tr>
     <tr height="{anchor_height}">
      {anchor_row}
     </tr>
+    <tr height="{page_height}">
+     {main_row}
+    </tr>
    </table>
   </div>
+  <div style="width: 500px; height: 1600px; position: absolute; margin-left: -870px; left:50%; top:50%; margin-top: -800px;">
+   <img src="images/handle_left.png" width="500" height="1600">
+  </div>
+  <div style="width: 500px; height: 1600px; position: absolute; margin-left: 390px; left:50%; top:50%; margin-top: -800px;">
+   <img src="images/handle_right.png" width="500" height="1600">
+  </div>
+  <div style="width: 500px; height: 40px; position: absolute; margin-left: -200px; left:50%; bottom:100px; background-color: #ece7ca">
   {content_table}
+  </div>
  </body>
 </html>
