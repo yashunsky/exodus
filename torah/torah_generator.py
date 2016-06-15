@@ -32,7 +32,8 @@ def anchor_row_segment(pages_count, start_number):
 
 if __name__ == '__main__':
     _, _, filenames = walk(PARTS_PATH).next()
-    filenames = [join(PARTS_PATH, f) for f in sorted(filenames)]
+    filenames = [join(PARTS_PATH, f)
+                 for f in sorted(filenames) if f.endswith('.jpg')]
 
     page_number = 1
     main_row = ''
@@ -44,13 +45,13 @@ if __name__ == '__main__':
         width, height = img.size
         assert height == PAGE_HEIGHT
 
-        pages_count = width / PAGE_WIDTH
+        pages_count = int(round(float(width) / PAGE_WIDTH))
         main_row += main_row_segment(filename, width, height, pages_count)
         anchor_row += anchor_row_segment(pages_count, page_number)
         page_number += pages_count
 
     content_table = ''.join([CONTENT_TEMPLATE.format(page=page)
-                             for page in xrange(1, page_number + 1)])
+                             for page in xrange(1, page_number)])
 
     torah_width = PAGE_WIDTH * 2
     torah_height = PAGE_HEIGHT + ANCHOR_HEIGHT * 2
