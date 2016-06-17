@@ -10,12 +10,12 @@ TORAH_HEMPLATE_PATH = 'torah_template.html'
 OUTPUT = 'index.html'
 
 PAGE_HEIGHT = 800
-PAGE_WIDTH = 210 * 800 / 297
+PAGE_WIDTH = 605
 
 ANCHOR_HEIGHT = 10
 
 MAIN_TEMPLATE = '<td colspan="{colspan}"><img src="{filename}" width="{width}" height="{height}"></td>'
-ANCHOR_TEMPLATE = '<td align="center"><a name="{page}">&nbsp;</a></td>'
+ANCHOR_TEMPLATE = '<td align="center" width="{width}"><a name="{page}">{page}</a></td>'
 CONTENT_TEMPLATE = ' <a href="#{page}">{page}</a> '
 
 
@@ -26,8 +26,8 @@ def main_row_segment(filename, width, height, pages_count):
                                 height=height)
 
 
-def anchor_row_segment(pages_count, start_number):
-    return ''.join([ANCHOR_TEMPLATE.format(page=page) for page
+def anchor_row_segment(width, pages_count, start_number):
+    return ''.join([ANCHOR_TEMPLATE.format(width=width / pages_count, page=page) for page
                     in xrange(start_number, start_number + pages_count)])
 
 if __name__ == '__main__':
@@ -46,8 +46,12 @@ if __name__ == '__main__':
         assert height == PAGE_HEIGHT
 
         pages_count = int(round(float(width) / PAGE_WIDTH))
+
+        if pages_count == 9:
+            pages_count = 10  # hack for long tapes troubles
+
         main_row += main_row_segment(filename, width, height, pages_count)
-        anchor_row += anchor_row_segment(pages_count, page_number)
+        anchor_row += anchor_row_segment(width, pages_count, page_number)
         page_number += pages_count
 
     content_table = ''.join([CONTENT_TEMPLATE.format(page=page)
@@ -59,11 +63,7 @@ if __name__ == '__main__':
     with open(TORAH_HEMPLATE_PATH, 'r') as t:
         template = t.read()
         with open(OUTPUT, 'w') as o:
-            o.write(template.format(torah_width=torah_width,
-                                    margin_left=-torah_width / 2,
-                                    torah_height=torah_height,
-                                    margin_top=-torah_height / 2,
-                                    page_height=PAGE_HEIGHT,
+            o.write(template.format(page_height=PAGE_HEIGHT,
                                     anchor_height=ANCHOR_HEIGHT,
                                     main_row=main_row,
                                     anchor_row=anchor_row,
