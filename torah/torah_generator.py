@@ -6,7 +6,7 @@ from os.path import join
 from PIL import Image  # pip install Pillow
 
 PARTS_PATH = 'parts'
-TORAH_HEMPLATE_PATH = 'torah_template.html'
+TORAH_TEMPLATE_PATH = 'torah_template.html'
 OUTPUT = 'index.html'
 
 PAGE_HEIGHT = 800
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     torah_width = PAGE_WIDTH * 2
     torah_height = PAGE_HEIGHT + ANCHOR_HEIGHT * 2
 
-    with open(TORAH_HEMPLATE_PATH, 'r') as t:
+    with open(TORAH_TEMPLATE_PATH, 'r') as t:
         template = t.read()
         with open(OUTPUT, 'w') as o:
             o.write(template.format(page_height=PAGE_HEIGHT,
