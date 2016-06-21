@@ -9,8 +9,8 @@ PARTS_PATH = 'parts'
 TORAH_TEMPLATE_PATH = 'torah_template.html'
 OUTPUT = 'index.html'
 
-PAGE_HEIGHT = 800
-PAGE_WIDTH = 605
+PAGE_HEIGHT = 1725
+PAGE_WIDTH = 1241
 
 ANCHOR_HEIGHT = 10
 
