@@ -15,8 +15,8 @@ PAGE_WIDTH = 1241
 ANCHOR_HEIGHT = 10
 
 MAIN_TEMPLATE = '<td colspan="{colspan}"><img src="{filename}" width="{width}" height="{height}"></td>'
-ANCHOR_TEMPLATE = '<td align="center" width="{width}"><a name="{page}">{page}</a></td>'
-CONTENT_TEMPLATE = ' <a href="#{page}">{page}</a> '
+ANCHOR_TEMPLATE = '<td align="center" width="{width}"><a name="{page}">{page}<br><img src="1x1.png" width="{width}" height="1"></a></td>'
+CONTENT_TEMPLATE = '<a href="#{page}">{page}</a>'
 
 
 def main_row_segment(filename, width, height, pages_count):
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         anchor_row += anchor_row_segment(width, pages_count, page_number)
         page_number += pages_count
 
-    content_table = ''.join([CONTENT_TEMPLATE.format(page=page)
+    content_table = ' '.join([CONTENT_TEMPLATE.format(page=page)
                              for page in xrange(1, page_number)])
 
     torah_width = PAGE_WIDTH * 2
