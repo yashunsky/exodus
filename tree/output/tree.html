@@ -1,0 +1,645 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <script src="jquery/external/jquery/jquery.js"></script>
+  <script src="jquery/jquery-ui.js"></script>
+  <script>
+   var links_js = {
+     IlijaX: ["IlijaX", "IlijaX", 2046, 1362],
+     IosifFidel_JudifRanven: ["IosifFidel", "JudifRanven", 2490, 2472],
+     IoahimX_JudifLilsla: ["IoahimX", "JudifLilsla", 354, 722],
+     IisusBantses_JaffaTajlami: ["IisusBantses", "JaffaTajlami", 3016, 2086],
+     GirsamaVasjaShatrov_TirtsaNessa: ["GirsamaVasjaShatrov", "TirtsaNessa", 1047, 1280],
+     IlijaAradursul_TalifaNessa: ["IlijaAradursul", "TalifaNessa", 2052, 2056],
+     JoelSeata: ["JoelSeata", "JoelSeata", 2410, 818],
+     BugurtaEfi_FarraElli: ["BugurtaEfi", "FarraElli", 1553, 3063],
+     Agoliav203_GabrielNastjaNikulshina: ["Agoliav203", "GabrielNastjaNikulshina", 893, 1035],
+     ElisejEjlin_IudejaSelena: ["ElisejEjlin", "IudejaSelena", 1650, 2838],
+     JudifLilsla: ["JudifLilsla", "JudifLilsla", 420, 846],
+     MiriamHelka: ["MiriamHelka", "MiriamHelka", 1168, 330],
+     SaraRi: ["SaraRi", "SaraRi", 2739, 2861],
+     UnknownX1: ["UnknownX1", "UnknownX1", 539, 2775],
+     AvessalomTeo: ["AvessalomTeo", "AvessalomTeo", 3192, 1203],
+     IoziilX_NoadijaX: ["IoziilX", "NoadijaX", 3176, 1304],
+     ZivaEvin: ["ZivaEvin", "ZivaEvin", 1824, 532],
+     AgarElli_SaulX: ["AgarElli", "SaulX", 1101, 959],
+     IlijaRingl_NoeminTinde: ["IlijaRingl", "NoeminTinde", 1925, 1134],
+     VeniaminDekart: ["VeniaminDekart", "VeniaminDekart", 1985, 2797],
+     IudaKsju_SaraRi: ["IudaKsju", "SaraRi", 2465, 2834],
+     AaronSergejShulgin_RahilMorlinks: ["AaronSergejShulgin", "RahilMorlinks", 822, 1278],
+     IsajjaX: ["IsajjaX", "IsajjaX", 2774, 572],
+     BaruhAvelio_MiriamAnchous: ["BaruhAvelio", "MiriamAnchous", 1623, 2182],
+     EzekijaX_MaraSelena: ["EzekijaX", "MaraSelena", 3648, 918],
+     ElisejRingl_MarijaTinde: ["ElisejRingl", "MarijaTinde", 2460, 2300],
+     AvraamDekart_DinaLilsla: ["AvraamDekart", "DinaLilsla", 147, 1891],
+     EzekijaAndrej_IlanaLuch: ["EzekijaAndrej", "IlanaLuch", 196, 1142],
+     IezekiilAndrej_RufVorobejka: ["IezekiilAndrej", "RufVorobejka", 3224, 2200],
+     EfremTover: ["EfremTover", "EfremTover", 1015, 2311],
+     AvigejaVerdalin_LazarFossovej: ["AvigejaVerdalin", "LazarFossovej", 297, 2554],
+     RafailKroll: ["RafailKroll", "RafailKroll", 2616, 858],
+     Agoliav203: ["Agoliav203", "Agoliav203", 1476, 608],
+     BaruhArtemGrachev_NoaStsila: ["BaruhArtemGrachev", "NoaStsila", 1940, 787],
+     IohavedaX: ["IohavedaX", "IohavedaX", 766, 164],
+     AnnaAnchous_LazarFossovej: ["AnnaAnchous", "LazarFossovej", 456, 2488],
+     AvraamUr_RevekkaSelena: ["AvraamUr", "RevekkaSelena", 1852, 1926],
+     DeboraZlata_IakovLu: ["DeboraZlata", "IakovLu", 1410, 844],
+     AvivaHejtell: ["AvivaHejtell", "AvivaHejtell", 150, 750],
+     HiramVerdalin_IoannaKsju: ["HiramVerdalin", "IoannaKsju", 392, 1356],
+     GabrielNastjaNikulshina_HiramVerdalin: ["GabrielNastjaNikulshina", "HiramVerdalin", 472, 1240],
+     EfaHelke_MikaelVasjaShatrov: ["EfaHelke", "MikaelVasjaShatrov", 1494, 2436],
+     IlijaVerit: ["IlijaVerit", "IlijaVerit", 3484, 2933],
+     AvessalomTeo_OraMarja: ["AvessalomTeo", "OraMarja", 3424, 1176],
+     Aramej203_RahilSeata: ["Aramej203", "RahilSeata", 903, 1754],
+     DeboraZlata_ZeevX: ["DeboraZlata", "ZeevX", 1266, 954],
+     IlijaAradursul_SepforaFalka: ["IlijaAradursul", "SepforaFalka", 2217, 2108],
+     LijaHejtell_OsherKamill: ["LijaHejtell", "OsherKamill", 2510, 1858],
+     EsfirZlata_MikaelVasjaShatrov: ["EsfirZlata", "MikaelVasjaShatrov", 1350, 2400],
+     EfaHelke_VeniaminDekart: ["EfaHelke", "VeniaminDekart", 1735, 2568],
+     MoisejBantses_SepforaVar: ["MoisejBantses", "SepforaVar", 908, 442],
+     IlijaRingl_NoaStsila: ["IlijaRingl", "NoaStsila", 2146, 1137],
+     SaraEjlin_TartanTim: ["SaraEjlin", "TartanTim", 2389, 1011],
+     EfratVorobejka_ZaraX: ["EfratVorobejka", "ZaraX", 2560, 1163],
+     DalilaMorlinks_ElisejRingl: ["DalilaMorlinks", "ElisejRingl", 2548, 2346],
+     IokanaanGrej_MiriamSashaDanilenko: ["IokanaanGrej", "MiriamSashaDanilenko", 3147, 1575],
+     IlijaKroll_MiriamAtanja: ["IlijaKroll", "MiriamAtanja", 532, 1760],
+     AvessalomLu_LijaEjlin: ["AvessalomLu", "LijaEjlin", 1021, 2023],
+     ElishevaSanka_MoisejFossovej: ["ElishevaSanka", "MoisejFossovej", 2850, 1350],
+     NaaraAnchous_SamsonX: ["NaaraAnchous", "SamsonX", 1732, 832],
+     IsajjaDekart_RufRanven: ["IsajjaDekart", "RufRanven", 3026, 753],
+     BaruhAvelio_MarijaTinde: ["BaruhAvelio", "MarijaTinde", 2130, 2358],
+     JaffaEfi_SimeonOrlik: ["JaffaEfi", "SimeonOrlik", 2158, 1434],
+     DinaHelke_FarraFidel: ["DinaHelke", "FarraFidel", 3644, 1400],
+     UnknownX8: ["UnknownX8", "UnknownX8", 2957, 3009],
+     SaraAtanja: ["SaraAtanja", "SaraAtanja", 3175, 2995],
+     UnknownX5: ["UnknownX5", "UnknownX5", 1100, 2657],
+     UnknownX4: ["UnknownX4", "UnknownX4", 2661, 3076],
+     UnknownX3: ["UnknownX3", "UnknownX3", 323, 2113],
+     UnknownX2: ["UnknownX2", "UnknownX2", 3400, 750],
+     SaraKirka: ["SaraKirka", "SaraKirka", 1732, 2764],
+     IlijaKroll_JudifEvin: ["IlijaKroll", "JudifEvin", 660, 1726],
+     MoisejFossovej_NavaKirka: ["MoisejFossovej", "NavaKirka", 2856, 1600],
+     AvramAradursul_ZelfaTajlami: ["AvramAradursul", "ZelfaTajlami", 2894, 1184],
+     ElisejRingl_GabriellaStsila: ["ElisejRingl", "GabriellaStsila", 2696, 2348],
+     DavidOrlik_JaffaMiriamMargarita: ["DavidOrlik", "JaffaMiriamMargarita", 3350, 2512],
+     AmarijaTover_FamarMargarita: ["AmarijaTover", "FamarMargarita", 476, 1078],
+     IosifKroll: ["IosifKroll", "IosifKroll", 2015, 2719],
+     IlijaVerit_SaraAtanja: ["IlijaVerit", "SaraAtanja", 3309, 2951],
+     VeniaminX: ["VeniaminX", "VeniaminX", 3045, 873],
+     NojAvelio_SerahUr: ["NojAvelio", "SerahUr", 3326, 1338]
+   }
+
+   var chars_js = {
+     NaamaUr: ["Aramej203_RahilSeata", 831, 2087],
+     IsaakOrlik: ["", 729, 2754],
+     DalilaMorlinks: ["IlijaKroll_MiriamAtanja", 2464, 2373],
+     EliazarVorobejka: ["AvigejaVerdalin_LazarFossovej", 234, 2667],
+     MiriamAtanja: ["BaruhArtemGrachev_NoaStsila", 478, 1674],
+     SaraRi: ["IezekiilAndrej_RufVorobejka", 2640, 2805],
+     IisusBantses: ["", 3070, 2056],
+     HiramVerdalin: ["IoahimX_JudifLilsla", 326, 1306],
+     ElisejRingl: ["LijaHejtell_OsherKamill", 2616, 2318],
+     FarraFidel: ["EzekijaX_MaraSelena", 3688, 1348],
+     SepforaVar: ["", 818, 322],
+     MiriamAnchous: ["AmarijaTover_FamarMargarita", 1498, 2178],
+     LijaVar: ["DalilaMorlinks_ElisejRingl", 2646, 2400],
+     ElisejEjlin: ["SaraKirka", 1742, 2890],
+     DinaHelke: ["UnknownX2", 3605, 1328],
+     IohavedaX: ["", 708, 106],
+     JudifRanven: ["IisusBantses_JaffaTajlami", 2682, 2481],
+     IudaKsju: ["IlijaAradursul_SepforaFalka", 2290, 2793],
+     SamsonX: ["", 1666, 776],
+     EsfirZlata: ["IlijaKroll_JudifEvin", 1290, 2390],
+     MarijaTinde: ["HiramVerdalin_IoannaKsju", 2354, 2260],
+     MikaelVasjaShatrov: ["", 1408, 2374],
+     MelholaElli: ["GirsamaVasjaShatrov_TirtsaNessa", 1124, 1436],
+     IoziilX: ["", 3226, 1264],
+     AdaNessa: ["UnknownX4", 2576, 3107],
+     JoelSeata: ["", 2406, 752],
+     SimeonKamill: ["SaraAtanja", 3131, 3049],
+     ElishevaLilsla: ["DavidOrlik_JaffaMiriamMargarita", 3302, 2628],
+     NoeminTinde: ["MiriamHelka", 1823, 1068],
+     AgarElli: ["", 1057, 903],
+     LijaHejtell: ["Agoliav203_GabrielNastjaNikulshina", 2436, 1826],
+     IsajjaDekart: ["", 3070, 692],
+     UnknownX8: ["", 2951, 2925],
+     NoadijaX: ["", 3115, 1292],
+     GabriellaStsila: ["IlijaKroll_JudifEvin", 2742, 2319],
+     UnknownX5: ["", 1084, 2559],
+     UnknownX4: ["", 2713, 3008],
+     UnknownX3: ["", 313, 2013],
+     UnknownX2: ["", 3400, 700],
+     AnnaAnchous: ["AvessalomLu_LijaEjlin", 553, 2455],
+     SaulAvelio: ["IosifFidel_JudifRanven", 2440, 2586],
+     IosifFidel: ["JaffaEfi_SimeonOrlik", 2332, 2400],
+     DinaLilsla: ["ElishevaSanka_MoisejFossovej", 217, 1871],
+     IosifKroll: ["IlijaAradursul_TalifaNessa", 2015, 2599],
+     VeniaminX: ["UnknownX2", 3224, 824],
+     EsferTover: ["UnknownX1", 594, 2854],
+     RufVerit: ["IudaKsju_SaraRi", 2434, 2954],
+     IlijaKroll: ["Agoliav203_GabrielNastjaNikulshina", 606, 1674],
+     KainArtemGrachev: ["ElisejRingl_GabriellaStsila", 2900, 2467],
+     EvaTajlami: ["IudaKsju_SaraRi", 2305, 2953],
+     SarraRanven: ["AvessalomTeo_OraMarja", 3445, 1348],
+     Samson203: ["UnknownX8", 2846, 3119],
+     SarraMorlinks: ["SaraRi", 2782, 2914],
+     UnknownX1: ["", 454, 2693],
+     ZivaEvin: ["", 1857, 449],
+     EsfirVar: ["UnknownX3", 391, 2165],
+     NaaraAnchous: ["", 1791, 823],
+     SusannaMargarita: ["UnknownX5", 988, 2811],
+     AmarijaTover: ["JudifLilsla", 430, 1058],
+     DalilaHejtell: ["IosifFidel_JudifRanven", 2560, 2622],
+     RufRanven: ["Agoliav203", 2931, 714],
+     Farra203: ["IlijaVerit", 3528, 3051],
+     TartanTim: ["", 2313, 975],
+     BaruhAvelio: ["BaruhArtemGrachev_NoaStsila", 1703, 2168],
+     Aramej203: ["AaronSergejShulgin_RahilMorlinks", 845, 1660],
+     BaruhArtemGrachev: ["ZivaEvin", 1888, 719],
+     RevekkaSelena: ["", 1802, 1902],
+     SiraAtanja: ["", 2900, 500],
+     FarraElli: ["VeniaminDekart", 1769, 2984],
+     EzekijaX: ["", 3705, 891],
+     SaraKirka: ["IlijaAradursul_SepforaFalka", 1784, 2710],
+     LazarFossovej: ["AvraamDekart_DinaLilsla", 232, 2460],
+     IlijaKamill: ["BaruhAvelio_MarijaTinde", 2206, 2414],
+     ZivaNastjaNikulshina: ["BaruhAvelio_MiriamAnchous", 1697, 2242],
+     AvessalomLu: ["GirsamaVasjaShatrov_TirtsaNessa", 941, 1958],
+     IlijaX: ["", 1992, 1287],
+     SimRingl: ["UnknownX8", 3047, 3108],
+     MikaelHejtell: ["BaruhAvelio_MarijaTinde", 2110, 2406],
+     NoaStsila: ["", 2002, 741],
+     MiriamSashaDanilenko: ["MoisejBantses_SepforaVar", 3057, 1545],
+     SepforaFalka: ["IokanaanGrej_MiriamSashaDanilenko", 2329, 2080],
+     SaulX: ["", 1160, 904],
+     IudejaSelena: ["SaraKirka", 1608, 2746],
+     AaronAvelio: ["EfremTover", 987, 2369],
+     OsherKamill: ["EfratVorobejka_ZaraX", 2552, 1828],
+     JaffaTajlami: ["JaffaEfi_SimeonOrlik", 2930, 2052],
+     JaffaEfi: ["IlijaX", 2107, 1425],
+     VeniaminLu: ["SaraAtanja", 3206, 3103],
+     GirsamaVasjaShatrov: ["MoisejBantses_SepforaVar", 979, 1238],
+     SiraSanka: ["IlijaVerit_SaraAtanja", 3380, 3057],
+     DeboraSanka: ["AvraamDekart_DinaLilsla", 95, 2037],
+     EfremTover: ["LijaHejtell_OsherKamill", 1072, 2241],
+     AzrailAradursul: ["AnnaAnchous_LazarFossovej", 519, 2609],
+     IsaakLu: ["DavidOrlik_JaffaMiriamMargarita", 3396, 2634],
+     IovMarja: ["IosifKroll", 2053, 2823],
+     IlijaRingl: ["JoelSeata", 2012, 1094],
+     AaronSergejShulgin: ["IohavedaX", 860, 1256],
+     JaffaMiriamMargarita: ["IlijaAradursul_SepforaFalka", 3300, 2500],
+     BerijaOrlik: ["SaraAtanja", 3279, 3075],
+     JudifEvin: ["AvramAradursul_ZelfaTajlami", 692, 1606],
+     MoisejFossovej: ["AvramAradursul_ZelfaTajlami", 2900, 1300],
+     AvivaHejtell: ["", 122, 702],
+     RufEvin: ["UnknownX1", 435, 2846],
+     RufZlata: ["EfaHelke_VeniaminDekart", 1689, 2680],
+     EvaRi: ["IsajjaDekart_RufRanven", 3023, 802],
+     RahilMorlinks: ["EzekijaAndrej_IlanaLuch", 770, 1258],
+     AnnaHelka: ["IisusBantses_JaffaTajlami", 2962, 2306],
+     ZeevX: ["", 1222, 853],
+     IokanaanGrej: ["IoziilX_NoadijaX", 3211, 1523],
+     VeniaminDekart: ["IlijaAradursul_TalifaNessa", 1851, 2468],
+     LijaEjlin: ["MoisejFossovej_NavaKirka", 1077, 1988],
+     IakovLu: ["Agoliav203", 1478, 804],
+     EmimaSashaDanilenko: ["LijaHejtell_OsherKamill", 2679, 2149],
+     NavaKirka: ["IlijaRingl_NoaStsila", 2671, 1443],
+     ZelfaTajlami: ["JoelSeata", 2781, 1120],
+     MiriamHelka: ["IohavedaX", 984, 296],
+     IisusArtemGrachev: ["NojAvelio_SerahUr", 3329, 1406],
+     JaffaEvin: ["IosifFidel_JudifRanven", 2364, 2512],
+     ElezarTeo: ["UnknownX3", 263, 2201],
+     SimeonOrlik: ["SaraEjlin_TartanTim", 2257, 1379],
+     BugurtaEfi: ["EsfirZlata_MikaelVasjaShatrov", 1427, 2950],
+     DeboraZlata: ["AvivaHejtell", 1342, 806],
+     SaraAtanja: ["AvessalomLu_LijaEjlin", 3114, 2931],
+     NojKirka: ["UnknownX8", 2945, 3120],
+     GabrielNastjaNikulshina: ["VeniaminX", 654, 1088],
+     MaraSelena: ["", 3575, 898],
+     SolomonAndrej: ["IosifFidel_JudifRanven", 2662, 2628],
+     IoahimX: ["", 304, 698],
+     DavidOrlik: ["IezekiilAndrej_RufVorobejka", 3400, 2500],
+     AvraamDekart: ["EzekijaAndrej_IlanaLuch", 64, 1865],
+     JudifLilsla: ["ZivaEvin", 400, 700],
+     AvessalomTeo: ["UnknownX2", 3276, 1140],
+     SaraEjlin: ["RafailKroll", 2454, 976],
+     IezekiilAndrej: ["", 3280, 2182],
+     TirtsaNessa: ["AvessalomTeo", 1103, 1237],
+     IlanaLuch: ["", 150, 1100],
+     MoisejTeo: ["IudaKsju_SaraRi", 2645, 2918],
+     ZelfaEvin: ["IisusBantses_JaffaTajlami", 3062, 2272],
+     ZelfaAtanja: ["BugurtaEfi_FarraElli", 1543, 3130],
+     Agoliav203: ["", 1395, 520],
+     EfratVorobejka: ["MiriamHelka", 2458, 1142],
+     OraMarja: ["DeboraZlata_ZeevX", 3462, 1112],
+     AhinoamaMarja: ["Aramej203_RahilSeata", 709, 2150],
+     AvelEfi: ["ElisejRingl_GabriellaStsila", 2788, 2545],
+     AvramAradursul: ["", 2949, 1100],
+     RahilSeata: ["DinaHelke_FarraFidel", 1111, 1774],
+     IsajjaX: ["", 2792, 416],
+     RafailKroll: ["IsajjaX", 2714, 753],
+     IlijaAradursul: ["JaffaEfi_SimeonOrlik", 2106, 2028],
+     AvigejaVerdalin: ["Aramej203_RahilSeata", 359, 2563],
+     KerenVerit: ["AvivaHejtell", 99, 925],
+     TalifaNessa: ["AvraamUr_RevekkaSelena", 1978, 2032],
+     EfaHelke: ["LijaHejtell_OsherKamill", 1588, 2404],
+     AvraamUr: ["IlijaRingl_NoeminTinde", 1900, 1900],
+     IlijaVerit: ["DinaHelke_FarraFidel", 3450, 2857],
+     SerahUr: ["", 3280, 1316],
+     ZaraX: ["", 2634, 1132],
+     SalomejaMorlinks: ["UnknownX5", 1259, 2777],
+     MelhisujKamill: ["AvigejaVerdalin_LazarFossovej", 340, 2662],
+     MiriamTajlami: ["IudaKsju_SaraRi", 2563, 2967],
+     ElimelehGrej: ["LijaHejtell_OsherKamill", 2839, 2131],
+     PninaLuch: ["EfaHelke_MikaelVasjaShatrov", 1528, 2698],
+     EzekijaAndrej: ["AvivaHejtell", 230, 1086],
+     ElishevaSanka: ["EfratVorobejka_ZaraX", 2780, 1314],
+     AgoliavHelka: ["DeboraZlata_IakovLu", 1414, 908],
+     RufVorobejka: ["IokanaanGrej_MiriamSashaDanilenko", 3169, 2137],
+     RavaimFidel: ["UnknownX4", 2726, 3120],
+     SolomonKirka: ["UnknownX5", 1189, 2798],
+     MoisejBantses: ["IohavedaX", 899, 326],
+     BerijaElli: ["EsfirZlata_MikaelVasjaShatrov", 1317, 2631],
+     IoannaKsju: ["NaaraAnchous_SamsonX", 460, 1297],
+     SulamitaSeata: ["EfaHelke_MikaelVasjaShatrov", 1443, 2681],
+     NojAvelio: ["UnknownX2", 3362, 1302],
+     FamarMargarita: ["AgarElli_SaulX", 516, 1044],
+     IlanaRanven: ["ElisejEjlin_IudejaSelena", 1605, 2909],
+     AvenirKamill: ["UnknownX5", 1088, 2811]
+   }
+
+  var points = {
+    chars: chars_js,
+    links: links_js
+  }
+
+  $(function() {
+    $( ".person" ).draggable({
+      drag: function( event, ui ) {
+        var key = ui.helper[0].id;
+        var x = ui.position.left;
+        var y = ui.position.top;
+        if (!(key in chars_js)) {
+          alert(key);
+        }
+        chars_js[key][1] = x;
+        chars_js[key][2] = y;
+        redrawLinks();          
+      }
+    });
+    $( ".link" ).draggable({
+      drag: function( event, ui ) {
+        var key = ui.helper[0].id;
+        var x = ui.position.left;
+        var y = ui.position.top;
+        links_js[key][2] = x;
+        links_js[key][3] = y;
+        redrawLinks();
+      }      
+    });
+  });
+
+  function draw2ColorLine(points, color1, color2, width1, width2) {
+      context.beginPath();    
+      context.moveTo(points[0][0], points[0][1]);
+      for (var i = 1; i < points.length; i ++) {
+        context.lineTo(points[i][0], points[i][1]);
+      }
+      context.lineWidth = width1;
+      context.strokeStyle = color1;
+      context.stroke();  
+
+      context.beginPath();    
+      context.moveTo(points[0][0], points[0][1]);
+      for (var i = 1; i < points.length; i ++) {
+        context.lineTo(points[i][0], points[i][1]);
+      }
+      context.lineWidth = width2;
+      context.strokeStyle = color2;
+      context.stroke();   
+  }
+
+  function redrawLinks() {
+    context.clearRect(0, 0, 3900, 3200);
+
+    for (key in chars_js) {
+      char_js = chars_js[key];
+      if (char_js[0] in links_js) {
+        point = links_js[char_js[0]];
+        var x1 = point[2];
+        var y1 = point[3];
+        var x2 = char_js[1];
+        var y2 = char_js[2]
+
+        draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 6);
+
+      }
+    }
+
+
+
+    for (key in links_js) {
+      link = links_js[key];
+      point = chars_js[link[0]];
+      var x1 = point[1];
+      var y1 = point[2];
+      var x2 = link[2];
+      var y2 = link[3];
+      point = chars_js[link[1]];
+      var x3 = point[1];
+      var y3 = point[2];
+
+      draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 12, 8);
+    }
+
+
+    }
+
+  </script>
+
+  <style>
+   .link {position: absolute; width: 8px; height: 8px; margin-left: -4px; margin-top: -4px; border-radius: 4px; background-color: black}
+   .person {position: absolute; width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; border-radius: 36px; text-align: center; vertical-align: middle; border: gray 4px solid}
+   .male {background-color: #e8bef3}
+   .female {background-color: #caffd1}
+     .Manasseh {border-left-color: black; border-top-color: black; border-right-color: blue; border-bottom-color: blue}
+   .Simeon {border-left-color: yellow; border-top-color: yellow; border-right-color: green; border-bottom-color: green}
+   .Judah {border-left-color: yellow; border-top-color: yellow; border-right-color: red; border-bottom-color: red}
+   .Reuben {border-left-color: white; border-top-color: white; border-right-color: red; border-bottom-color: red}
+   .Asher {border-left-color: green; border-top-color: green; border-right-color: black; border-bottom-color: black}
+   .Ephraim {border-left-color: black; border-top-color: black; border-right-color: yellow; border-bottom-color: yellow}
+   .Issachar {border-left-color: blue; border-top-color: blue; border-right-color: white; border-bottom-color: white}
+   .Benjamin {border-left-color: red; border-top-color: red; border-right-color: blue; border-bottom-color: blue}
+   .Dan {border-left-color: blue; border-top-color: blue; border-right-color: green; border-bottom-color: green}
+   .Levi {border-left-color: black; border-top-color: black; border-right-color: red; border-bottom-color: red}
+   .Naphtali {border-left-color: yellow; border-top-color: yellow; border-right-color: blue; border-bottom-color: blue}
+   .Gad {border-left-color: white; border-top-color: white; border-right-color: black; border-bottom-color: black}
+   .Zebulun {border-left-color: yellow; border-top-color: yellow; border-right-color: white; border-bottom-color: white}
+  </style>
+ </head>
+ <body bgcolor="gray">
+  <div style="position: absolute; left: 0px; top: 0px; width:3900px; height:3200px"><canvas id="tree" width="3900" height="3200"></div>
+  <div id="UnknownX8" style="left: 2957.15002441px; top: 3009.40802002px" class="link">&nbsp</div>
+  <div id="UnknownX5" style="left: 1100px; top: 2657px" class="link">&nbsp</div>
+  <div id="EfremTover" style="left: 1015px; top: 2311px" class="link">&nbsp</div>
+  <div id="IsajjaDekart_RufRanven" style="left: 3026px; top: 753px" class="link">&nbsp</div>
+  <div id="JoelSeata" style="left: 2410px; top: 818px" class="link">&nbsp</div>
+  <div id="IokanaanGrej_MiriamSashaDanilenko" style="left: 3147px; top: 1575px" class="link">&nbsp</div>
+  <div id="JudifLilsla" style="left: 420px; top: 846px" class="link">&nbsp</div>
+  <div id="DalilaMorlinks_ElisejRingl" style="left: 2548px; top: 2346px" class="link">&nbsp</div>
+  <div id="AvivaHejtell" style="left: 150px; top: 750px" class="link">&nbsp</div>
+  <div id="BugurtaEfi_FarraElli" style="left: 1553px; top: 3063px" class="link">&nbsp</div>
+  <div id="IohavedaX" style="left: 766px; top: 164px" class="link">&nbsp</div>
+  <div id="BaruhArtemGrachev_NoaStsila" style="left: 1940.6159668px; top: 787.914001465px" class="link">&nbsp</div>
+  <div id="EfaHelke_MikaelVasjaShatrov" style="left: 1494px; top: 2436px" class="link">&nbsp</div>
+  <div id="IosifFidel_JudifRanven" style="left: 2490px; top: 2472px" class="link">&nbsp</div>
+  <div id="EzekijaAndrej_IlanaLuch" style="left: 196px; top: 1142px" class="link">&nbsp</div>
+  <div id="SaraKirka" style="left: 1732px; top: 2764px" class="link">&nbsp</div>
+  <div id="VeniaminX" style="left: 3045px; top: 873px" class="link">&nbsp</div>
+  <div id="DeboraZlata_IakovLu" style="left: 1410px; top: 844px" class="link">&nbsp</div>
+  <div id="NaaraAnchous_SamsonX" style="left: 1732px; top: 832px" class="link">&nbsp</div>
+  <div id="IlijaRingl_NoaStsila" style="left: 2146.63208008px; top: 1137.18200684px" class="link">&nbsp</div>
+  <div id="IlijaAradursul_TalifaNessa" style="left: 2052px; top: 2056px" class="link">&nbsp</div>
+  <div id="IlijaRingl_NoeminTinde" style="left: 1925.63000488px; top: 1134.17803955px" class="link">&nbsp</div>
+  <div id="EsfirZlata_MikaelVasjaShatrov" style="left: 1350px; top: 2400px" class="link">&nbsp</div>
+  <div id="EzekijaX_MaraSelena" style="left: 3648px; top: 918px" class="link">&nbsp</div>
+  <div id="BaruhAvelio_MiriamAnchous" style="left: 1623px; top: 2182px" class="link">&nbsp</div>
+  <div id="EfaHelke_VeniaminDekart" style="left: 1735px; top: 2568px" class="link">&nbsp</div>
+  <div id="RafailKroll" style="left: 2616px; top: 858px" class="link">&nbsp</div>
+  <div id="IlijaAradursul_SepforaFalka" style="left: 2217px; top: 2108px" class="link">&nbsp</div>
+  <div id="IlijaVerit" style="left: 3484.71899414px; top: 2933.85302734px" class="link">&nbsp</div>
+  <div id="NojAvelio_SerahUr" style="left: 3326px; top: 1338px" class="link">&nbsp</div>
+  <div id="MiriamHelka" style="left: 1168px; top: 330px" class="link">&nbsp</div>
+  <div id="SaraRi" style="left: 2739.71105957px; top: 2861.69702148px" class="link">&nbsp</div>
+  <div id="ElisejRingl_GabriellaStsila" style="left: 2696px; top: 2348px" class="link">&nbsp</div>
+  <div id="Aramej203_RahilSeata" style="left: 903px; top: 1754px" class="link">&nbsp</div>
+  <div id="AvessalomLu_LijaEjlin" style="left: 1021px; top: 2023px" class="link">&nbsp</div>
+  <div id="IudaKsju_SaraRi" style="left: 2465.70904541px; top: 2834.684021px" class="link">&nbsp</div>
+  <div id="DinaHelke_FarraFidel" style="left: 3644px; top: 1400px" class="link">&nbsp</div>
+  <div id="Agoliav203_GabrielNastjaNikulshina" style="left: 893px; top: 1035px" class="link">&nbsp</div>
+  <div id="AaronSergejShulgin_RahilMorlinks" style="left: 822px; top: 1278px" class="link">&nbsp</div>
+  <div id="IoziilX_NoadijaX" style="left: 3176px; top: 1304px" class="link">&nbsp</div>
+  <div id="IsajjaX" style="left: 2774px; top: 572px" class="link">&nbsp</div>
+  <div id="AnnaAnchous_LazarFossovej" style="left: 456.979003906px; top: 2488.61999512px" class="link">&nbsp</div>
+  <div id="JaffaEfi_SimeonOrlik" style="left: 2158px; top: 1434px" class="link">&nbsp</div>
+  <div id="SaraAtanja" style="left: 3175.71606445px; top: 2995.86999512px" class="link">&nbsp</div>
+  <div id="IisusBantses_JaffaTajlami" style="left: 3016px; top: 2086px" class="link">&nbsp</div>
+  <div id="IoahimX_JudifLilsla" style="left: 354px; top: 722px" class="link">&nbsp</div>
+  <div id="GirsamaVasjaShatrov_TirtsaNessa" style="left: 1047px; top: 1280px" class="link">&nbsp</div>
+  <div id="AvramAradursul_ZelfaTajlami" style="left: 2894px; top: 1184px" class="link">&nbsp</div>
+  <div id="LijaHejtell_OsherKamill" style="left: 2510px; top: 1858px" class="link">&nbsp</div>
+  <div id="IlijaKroll_MiriamAtanja" style="left: 532px; top: 1760px" class="link">&nbsp</div>
+  <div id="HiramVerdalin_IoannaKsju" style="left: 392px; top: 1356px" class="link">&nbsp</div>
+  <div id="UnknownX2" style="left: 3400px; top: 750px" class="link">&nbsp</div>
+  <div id="UnknownX4" style="left: 2661.17199707px; top: 3076.95397949px" class="link">&nbsp</div>
+  <div id="UnknownX1" style="left: 539px; top: 2775px" class="link">&nbsp</div>
+  <div id="ElisejRingl_MarijaTinde" style="left: 2460px; top: 2300px" class="link">&nbsp</div>
+  <div id="MoisejBantses_SepforaVar" style="left: 908.00201416px; top: 442.999023438px" class="link">&nbsp</div>
+  <div id="AvraamDekart_DinaLilsla" style="left: 147px; top: 1891px" class="link">&nbsp</div>
+  <div id="DavidOrlik_JaffaMiriamMargarita" style="left: 3350px; top: 2512px" class="link">&nbsp</div>
+  <div id="IlijaVerit_SaraAtanja" style="left: 3309.72302246px; top: 2951.86804199px" class="link">&nbsp</div>
+  <div id="AmarijaTover_FamarMargarita" style="left: 476px; top: 1078px" class="link">&nbsp</div>
+  <div id="Agoliav203" style="left: 1476px; top: 608px" class="link">&nbsp</div>
+  <div id="IlijaKroll_JudifEvin" style="left: 660px; top: 1726px" class="link">&nbsp</div>
+  <div id="EfratVorobejka_ZaraX" style="left: 2560px; top: 1163px" class="link">&nbsp</div>
+  <div id="GabrielNastjaNikulshina_HiramVerdalin" style="left: 472px; top: 1240px" class="link">&nbsp</div>
+  <div id="ElisejEjlin_IudejaSelena" style="left: 1650px; top: 2838px" class="link">&nbsp</div>
+  <div id="ElishevaSanka_MoisejFossovej" style="left: 2850px; top: 1350px" class="link">&nbsp</div>
+  <div id="DeboraZlata_ZeevX" style="left: 1266px; top: 954px" class="link">&nbsp</div>
+  <div id="AvigejaVerdalin_LazarFossovej" style="left: 297px; top: 2554px" class="link">&nbsp</div>
+  <div id="VeniaminDekart" style="left: 1985px; top: 2797px" class="link">&nbsp</div>
+  <div id="IlijaX" style="left: 2046.24902344px; top: 1362.60101318px" class="link">&nbsp</div>
+  <div id="UnknownX3" style="left: 323px; top: 2113px" class="link">&nbsp</div>
+  <div id="AvraamUr_RevekkaSelena" style="left: 1852px; top: 1926px" class="link">&nbsp</div>
+  <div id="IezekiilAndrej_RufVorobejka" style="left: 3224px; top: 2200px" class="link">&nbsp</div>
+  <div id="AvessalomTeo" style="left: 3192px; top: 1203px" class="link">&nbsp</div>
+  <div id="AvessalomTeo_OraMarja" style="left: 3424px; top: 1176px" class="link">&nbsp</div>
+  <div id="MoisejFossovej_NavaKirka" style="left: 2856.43408203px; top: 1600.85003662px" class="link">&nbsp</div>
+  <div id="IosifKroll" style="left: 2015px; top: 2719px" class="link">&nbsp</div>
+  <div id="BaruhAvelio_MarijaTinde" style="left: 2130px; top: 2358px" class="link">&nbsp</div>
+  <div id="SaraEjlin_TartanTim" style="left: 2389px; top: 1011px" class="link">&nbsp</div>
+  <div id="ZivaEvin" style="left: 1824.62304688px; top: 532.264038086px" class="link">&nbsp</div>
+  <div id="AgarElli_SaulX" style="left: 1101px; top: 959px" class="link">&nbsp</div>
+  <div id="NaamaUr" style="left: 831px; top: 2087px" class="person Ur Levi female VI VII VIII IX X XI XII"><br>Наама (Ур)</div>
+  <div id="IsaakOrlik" style="left: 729.981018066px; top: 2754.3760376px" class="person Orlik Reuben male XII"><br>Исаак (Орлик)</div>
+  <div id="DalilaMorlinks" style="left: 2464px; top: 2373px" class="person Morlinks Simeon female V VI VII VIII IX"><br>Далила (Морлинкс)</div>
+  <div id="EliazarVorobejka" style="left: 234px; top: 2667px" class="person Vorobejka Reuben male IX X XI XII"><br>Елиазар (Воробейка)</div>
+  <div id="MiriamAtanja" style="left: 478.12399292px; top: 1674.16900635px" class="person Atanja Naphtali female II III IV V VI"><br>Мириам (Атаня)</div>
+  <div id="SaraRi" style="left: 2640.72003174px; top: 2805.67602539px" class="person Ri Ephraim female VI VII VIII IX X XI XII"><br>Сара (Ри)</div>
+  <div id="IisusBantses" style="left: 3070px; top: 2056px" class="person Bantses Zebulun male IV V VI VII"><br>Иисус (Банцес)</div>
+  <div id="HiramVerdalin" style="left: 326px; top: 1306px" class="person Verdalin Simeon male I II III IV V"><br>Хирам (Вердалин)</div>
+  <div id="ElisejRingl" style="left: 2616px; top: 2318px" class="person Ringl Issachar male V VI VII VIII IX"><br>Елисей (Рингл)</div>
+  <div id="FarraFidel" style="left: 3688px; top: 1348px" class="person Fidel Benjamin male I II III IV V"><br>Фарра (Фидель)</div>
+  <div id="SepforaVar" style="left: 818px; top: 322px" class="person Var female I II III"><br>Сепфора (Вар)</div>
+  <div id="MiriamAnchous" style="left: 1498px; top: 2178px" class="person Anchous Simeon female IV V VI"><br>Мириам (Анчоус)</div>
+  <div id="LijaVar" style="left: 2646px; top: 2400px" class="person Var Issachar female VIII IX X XI XII"><br>Лия (Вар)</div>
+  <div id="ElisejEjlin" style="left: 1742px; top: 2890px" class="person Ejlin Naphtali male VIII IX X XI XII"><br>Елисей (Эйлин)</div>
+  <div id="DinaHelke" style="left: 3605px; top: 1328px" class="person Helke Ephraim female I II III IV V"><br>Дина (Хелькэ)</div>
+  <div id="IohavedaX" style="left: 708px; top: 106px" class="person X Levi female"><br>Иохаведа (X)</div>
+  <div id="JudifRanven" style="left: 2682px; top: 2481px" class="person Ranven Zebulun female VII VIII IX X XI"><br>Юдифь (Ранвен)</div>
+  <div id="IudaKsju" style="left: 2290px; top: 2793px" class="person Ksju Asher male VI VII VIII IX X XI XII"><br>Иуда (Ксю)</div>
+  <div id="SamsonX" style="left: 1666px; top: 776px" class="person X Naphtali male"><br>Самсон (X)</div>
+  <div id="EsfirZlata" style="left: 1290px; top: 2390px" class="person Zlata Simeon female V VI VII VIII IX X"><br>Эсфирь (Злата)</div>
+  <div id="MarijaTinde" style="left: 2354px; top: 2260px" class="person Tinde Simeon female V VI VII VIII"><br>Мария (Тинде)</div>
+  <div id="MikaelVasjaShatrov" style="left: 1408px; top: 2374px" class="person VasjaShatrov Dan male V VI VII VIII IX X"><br>Микаэль (Вася Шатров)</div>
+  <div id="MelholaElli" style="left: 1124px; top: 1436px" class="person Elli Levi female IV V VI"><br>Мелхола (Элли)</div>
+  <div id="IoziilX" style="left: 3226px; top: 1264px" class="person X Manasseh male"><br>Иозиил (X)</div>
+  <div id="AdaNessa" style="left: 2576.36102295px; top: 3107.18505859px" class="person Nessa Zebulun female XI XII"><br>Ада (Нэсса)</div>
+  <div id="JoelSeata" style="left: 2406px; top: 752px" class="person Seata Gad female I"><br>Йоэль (Сеата)</div>
+  <div id="SimeonKamill" style="left: 3131.45605469px; top: 3049.57202148px" class="person Kamill Benjamin male X XI"><br>Симеон (Камилл)</div>
+  <div id="ElishevaLilsla" style="left: 3302px; top: 2628px" class="person Lilsla Ephraim female VIII IX X XI XII"><br>Елишева (Лильсла)</div>
+  <div id="NoeminTinde" style="left: 1823px; top: 1068px" class="person Tinde Gad female I II III IV"><br>Ноеминь (Тинде)</div>
+  <div id="AgarElli" style="left: 1057px; top: 903px" class="person Elli Simeon female I II III"><br>Агарь (Элли)</div>
+  <div id="LijaHejtell" style="left: 2436px; top: 1826px" class="person Hejtell Dan female II III IV V VI"><br>Лия (Хейтэлл)</div>
+  <div id="IsajjaDekart" style="left: 3070px; top: 692px" class="person Dekart Manasseh male I"><br>Исайя (Декарт)</div>
+  <div id="UnknownX8" style="left: 2951.16906738px; top: 2925.40899658px" class="person X8 Ephraim male IX X"><br>? (X8)</div>
+  <div id="NoadijaX" style="left: 3115px; top: 1292px" class="person X Manasseh female"><br>Ноадия (X)</div>
+  <div id="GabriellaStsila" style="left: 2742px; top: 2319px" class="person Stsila Simeon female VI VII VIII IX X XI XII"><br>Габриэлла (Сцила)</div>
+  <div id="UnknownX5" style="left: 1084px; top: 2559px" class="person X5 Dan male X XI XII"><br>? (X5)</div>
+  <div id="UnknownX4" style="left: 2713.15704346px; top: 3008.93304443px" class="person X4 Zebulun male X XI"><br>? (X4)</div>
+  <div id="UnknownX3" style="left: 313px; top: 2013px" class="person X3 Reuben male III IV"><br>? (X3)</div>
+  <div id="UnknownX2" style="left: 3400px; top: 700px" class="person X2 Ephraim male"><br>? (X2)</div>
+  <div id="AnnaAnchous" style="left: 553px; top: 2455px" class="person Anchous Levi female VII VIII IX X XI XII"><br>Анна (Анчоус)</div>
+  <div id="SaulAvelio" style="left: 2440px; top: 2586px" class="person Avelio Issachar male X XI XII"><br>Саул (Авелио)</div>
+  <div id="IosifFidel" style="left: 2332px; top: 2400px" class="person Fidel Asher male VI VII VIII IX X"><br>Иосиф (Фидель)</div>
+  <div id="DinaLilsla" style="left: 217px; top: 1871px" class="person Lilsla Zebulun female III IV V VI VII"><br>Дина (Лильсла)</div>
+  <div id="IosifKroll" style="left: 2015px; top: 2599px" class="person Kroll Asher male VII VIII IX X XI XII"><br>Иосиф (Кролль)</div>
+  <div id="VeniaminX" style="left: 3224px; top: 824px" class="person X Ephraim male"><br>Вениамин (X)</div>
+  <div id="EsferTover" style="left: 594.988037109px; top: 2854.69104004px" class="person Tover Reuben male XI XII"><br>Эсфер (Товер)</div>
+  <div id="RufVerit" style="left: 2434.72601318px; top: 2954.68103027px" class="person Verit Manasseh female IX X XI XII"><br>Руфь (Верит)</div>
+  <div id="IlijaKroll" style="left: 606px; top: 1674px" class="person Kroll Simeon male II III IV V VI"><br>Илия (Кролль)</div>
+  <div id="KainArtemGrachev" style="left: 2900px; top: 2467px" class="person ArtemGrachev Issachar male VII VIII IX"><br>Каин (Артем Грачев)</div>
+  <div id="EvaTajlami" style="left: 2305.71600342px; top: 2953.7010498px" class="person Tajlami Manasseh female XII"><br>Ева (Тайлами)</div>
+  <div id="SarraRanven" style="left: 3445px; top: 1348px" class="person Ranven Ephraim female III IV V VI"><br>Сарра (Ранвен)</div>
+  <div id="Samson203" style="left: 2846.17199707px; top: 3119.10705566px" class="person 203 Ephraim male X XI XII"><br>Самсон (203)</div>
+  <div id="SarraMorlinks" style="left: 2782.7310791px; top: 2914.69104004px" class="person Morlinks Manasseh female X"><br>Сарра (Морлинкс)</div>
+  <div id="UnknownX1" style="left: 454.982025146px; top: 2693.69702148px" class="person X1 Reuben male XI XII"><br>? (X1)</div>
+  <div id="ZivaEvin" style="left: 1857.62799072px; top: 449.277008057px" class="person Evin Naphtali female I"><br>Зива (Ёвин)</div>
+  <div id="EsfirVar" style="left: 391px; top: 2165px" class="person Var Reuben female IV V VI VII"><br>Эсфирь (Вар)</div>
+  <div id="NaaraAnchous" style="left: 1791px; top: 823px" class="person Anchous Naphtali female I II III"><br>Наара (Анчоус)</div>
+  <div id="SusannaMargarita" style="left: 988px; top: 2811px" class="person Margarita Dan female XII"><br>Сусанна (Маргарита)</div>
+  <div id="AmarijaTover" style="left: 430px; top: 1058px" class="person Tover Simeon male I II III IV"><br>Амария (Товер)</div>
+  <div id="DalilaHejtell" style="left: 2560px; top: 2622px" class="person Hejtell Zebulun female IX X XI XII"><br>Далила (Хейтэлл)</div>
+  <div id="RufRanven" style="left: 2931px; top: 714px" class="person Ranven Dan female I II"><br>Руфь (Ранвен)</div>
+  <div id="Farra203" style="left: 3528.72802734px; top: 3051.86303711px" class="person 203 Benjamin male VII VIII IX"><br>Фарра (203)</div>
+  <div id="TartanTim" style="left: 2313px; top: 975px" class="person Tim Asher male"><br>Тартан (Тим)</div>
+  <div id="BaruhAvelio" style="left: 1703px; top: 2168px" class="person Avelio Naphtali male IV V VI VII"><br>Барух (Авелио)</div>
+  <div id="Aramej203" style="left: 845px; top: 1660px" class="person 203 Levi male II III IV V VI"><br>Арамей (203)</div>
+  <div id="BaruhArtemGrachev" style="left: 1888.25201416px; top: 719.50402832px" class="person ArtemGrachev Naphtali male I II"><br>Барух (Артем Грачев)</div>
+  <div id="RevekkaSelena" style="left: 1802px; top: 1902px" class="person Selena female"><br>Ревекка (Селена)</div>
+  <div id="SiraAtanja" style="left: 2900px; top: 500px" class="person Atanja Zebulun female I"><br>Сира (Атаня)</div>
+  <div id="FarraElli" style="left: 1769px; top: 2984px" class="person Elli Asher male X XI XII"><br>Фарра (Элли)</div>
+  <div id="EzekijaX" style="left: 3705px; top: 891px" class="person X Benjamin male"><br>Езекия (X)</div>
+  <div id="SaraKirka" style="left: 1784px; top: 2710px" class="person Kirka Asher female VI VII VIII IX"><br>Сара (Кирка)</div>
+  <div id="LazarFossovej" style="left: 232.988006592px; top: 2460.63500977px" class="person Fossovej Reuben male VI VII VIII IX X XI XII"><br>Лазарь (Фоссовей)</div>
+  <div id="IlijaKamill" style="left: 2206px; top: 2414px" class="person Kamill Naphtali male VII VIII"><br>Илия (Камилл)</div>
+  <div id="ZivaNastjaNikulshina" style="left: 1697px; top: 2242px" class="person NastjaNikulshina Naphtali female V VI VII VIII IX X XI XII"><br>Зива (Настя Никульшина)</div>
+  <div id="AvessalomLu" style="left: 941px; top: 1958px" class="person Lu Levi male IV V VI VII"><br>Авессалом (Лу)</div>
+  <div id="IlijaX" style="left: 1992.63708496px; top: 1287.32400513px" class="person X Gad male I"><br>Илия (X)</div>
+  <div id="SimRingl" style="left: 3047.43408203px; top: 3108.56005859px" class="person Ringl Ephraim male X XI XII"><br>Сим (Рингл)</div>
+  <div id="MikaelHejtell" style="left: 2110px; top: 2406px" class="person Hejtell Naphtali male VII VIII"><br>Микаэл (Хейтэлл)</div>
+  <div id="NoaStsila" style="left: 2002.62304688px; top: 741.937011719px" class="person Stsila Manasseh female I II III IV V"><br>Ноа (Сцила)</div>
+  <div id="MiriamSashaDanilenko" style="left: 3057px; top: 1545px" class="person SashaDanilenko Levi female II III IV V"><br>Мириам (Саша Даниленко)</div>
+  <div id="SepforaFalka" style="left: 2329px; top: 2080px" class="person Falka Asher female V"><br>Сепфора (Фалька)</div>
+  <div id="SaulX" style="left: 1160px; top: 904px" class="person X Judah male"><br>Саул (X)</div>
+  <div id="IudejaSelena" style="left: 1608px; top: 2746px" class="person Selena Naphtali female VII"><br>Иудея (Селена)</div>
+  <div id="AaronAvelio" style="left: 987px; top: 2369px" class="person Avelio Levi male VIII IX"><br>Аарон (Авелио)</div>
+  <div id="OsherKamill" style="left: 2552px; top: 1828px" class="person Kamill Issachar male II III IV V VI"><br>Ошер (Камилл)</div>
+  <div id="JaffaTajlami" style="left: 2930px; top: 2052px" class="person Tajlami Asher female IV V VI VII VIII"><br>Яффа (Тайлами)</div>
+  <div id="JaffaEfi" style="left: 2107px; top: 1425px" class="person Efi Gad female I II III IV V VI"><br>Яффа (Эфи)</div>
+  <div id="VeniaminLu" style="left: 3206.71008301px; top: 3103.86999512px" class="person Lu Benjamin male X XI XII"><br>Вениамин (Лу)</div>
+  <div id="GirsamaVasjaShatrov" style="left: 979px; top: 1238px" class="person VasjaShatrov Levi male I"><br>Гирсама (Вася Шатров)</div>
+  <div id="SiraSanka" style="left: 3380.43908691px; top: 3057.60998535px" class="person Sanka Benjamin female IX X XI XII"><br>Сира (Санька)</div>
+  <div id="DeboraSanka" style="left: 95px; top: 2037px" class="person Sanka Reuben female VI VII VIII"><br>Дебора (Санька)</div>
+  <div id="EfremTover" style="left: 1072px; top: 2241px" class="person Tover Issachar male V VI VII VIII IX X"><br>Ефрем (Товер)</div>
+  <div id="AzrailAradursul" style="left: 519.984008789px; top: 2609.625px" class="person Aradursul Reuben male IX X XI XII"><br>Азраил (Арадурсул)</div>
+  <div id="IsaakLu" style="left: 3396px; top: 2634px" class="person Lu Ephraim male VIII IX"><br>Исаак (Лу)</div>
+  <div id="IovMarja" style="left: 2053px; top: 2823px" class="person Marja Gad male X XI XII"><br>Иов (Марья)</div>
+  <div id="IlijaRingl" style="left: 2012px; top: 1094px" class="person Ringl Gad male I II III IV"><br>Илия (Рингл)</div>
+  <div id="AaronSergejShulgin" style="left: 860px; top: 1256px" class="person SergejShulgin Levi male I II III"><br>Аарон (Сергей Шульгин)</div>
+  <div id="JaffaMiriamMargarita" style="left: 3300px; top: 2500px" class="person Margarita Asher female VI VII VIII IX X XI"><br>Яффа-Мириам (Маргарита)</div>
+  <div id="BerijaOrlik" style="left: 3279.71508789px; top: 3075.86108398px" class="person Orlik Benjamin male X XI"><br>Берия (Орлик)</div>
+  <div id="JudifEvin" style="left: 692px; top: 1606px" class="person Evin Zebulun female II III IV V VI"><br>Юдифь (Ёвин)</div>
+  <div id="MoisejFossovej" style="left: 2900px; top: 1300px" class="person Fossovej Zebulun male I II III IV V"><br>Моисей (Фоссовей)</div>
+  <div id="AvivaHejtell" style="left: 122px; top: 702px" class="person Hejtell Reuben female I"><br>Авива (Хейтэлл)</div>
+  <div id="RufEvin" style="left: 435px; top: 2846px" class="person Evin Reuben female XII"><br>Руфь (Ёвин)</div>
+  <div id="RufZlata" style="left: 1689px; top: 2680px" class="person Zlata Asher female XI XII"><br>Руфь (Злата)</div>
+  <div id="EvaRi" style="left: 3023px; top: 802px" class="person Ri Manasseh female I II III IV V"><br>Ева (Ри)</div>
+  <div id="RahilMorlinks" style="left: 770px; top: 1258px" class="person Morlinks Reuben female I II III IV"><br>Рахиль (Морлинкс)</div>
+  <div id="AnnaHelka" style="left: 2962px; top: 2306px" class="person Helka Zebulun female VIII IX X XI XII"><br>Анна (Хэлка)</div>
+  <div id="ZeevX" style="left: 1222px; top: 853px" class="person X Dan male"><br>Зеэв (X)</div>
+  <div id="IokanaanGrej" style="left: 3211px; top: 1523px" class="person Grej Manasseh male I II III IV V"><br>Иоканаан (Грэй)</div>
+  <div id="VeniaminDekart" style="left: 1851px; top: 2468px" class="person Dekart Asher male VII VIII IX X XI XII"><br>Вениамин (Декарт)</div>
+  <div id="LijaEjlin" style="left: 1077px; top: 1988px" class="person Ejlin Zebulun female IV V VI VII"><br>Лия (Эйлин)</div>
+  <div id="IakovLu" style="left: 1478px; top: 804px" class="person Lu Dan male I II III"><br>Иаков (Лу)</div>
+  <div id="EmimaSashaDanilenko" style="left: 2679px; top: 2149px" class="person SashaDanilenko Issachar female VI VII VIII IX X XI XII"><br>Емима (Саша Даниленко)</div>
+  <div id="NavaKirka" style="left: 2671.45507812px; top: 1443.85699463px" class="person Kirka Gad female I II III IV V"><br>Нава (Кирка)</div>
+  <div id="ZelfaTajlami" style="left: 2781px; top: 1120px" class="person Tajlami Zebulun female I II III"><br>Зелфа (Тайлами)</div>
+  <div id="MiriamHelka" style="left: 984px; top: 296px" class="person Helka Levi female I II"><br>Мириам (Хэлка)</div>
+  <div id="IisusArtemGrachev" style="left: 3329px; top: 1406px" class="person ArtemGrachev Ephraim male III IV V VI"><br>Иисус (Артем Грачев)</div>
+  <div id="JaffaEvin" style="left: 2364px; top: 2512px" class="person Evin Asher female IX X XI"><br>Яффа (Ёвин)</div>
+  <div id="ElezarTeo" style="left: 263px; top: 2201px" class="person Teo Reuben male IV V VI VII"><br>Ельезар (Тео)</div>
+  <div id="SimeonOrlik" style="left: 2257px; top: 1379px" class="person Orlik Asher male I II III IV V"><br>Симеон (Орлик)</div>
+  <div id="BugurtaEfi" style="left: 1427px; top: 2950px" class="person Efi Dan female VIII IX X XI XII"><br>Бугурта (Эфи)</div>
+  <div id="DeboraZlata" style="left: 1342px; top: 806px" class="person Zlata Reuben female I II III IV"><br>Дебора (Злата)</div>
+  <div id="SaraAtanja" style="left: 3114.71508789px; top: 2931.86505127px" class="person Atanja Levi female VII VIII IX X XI"><br>Сара (Атаня)</div>
+  <div id="NojKirka" style="left: 2945.16308594px; top: 3120.15002441px" class="person Kirka Ephraim male X XI"><br>Ной (Кирка)</div>
+  <div id="GabrielNastjaNikulshina" style="left: 654px; top: 1088px" class="person NastjaNikulshina Ephraim female I II III IV"><br>Габриэль (Настя Никульшина)</div>
+  <div id="MaraSelena" style="left: 3575px; top: 898px" class="person Selena female I"><br>Мара (Селена)</div>
+  <div id="SolomonAndrej" style="left: 2662px; top: 2628px" class="person Andrej Zebulun male IX X XI XII"><br>Соломон (Андрей)</div>
+  <div id="IoahimX" style="left: 304px; top: 698px" class="person X Simeon male"><br>Иоахим (X)</div>
+  <div id="DavidOrlik" style="left: 3400px; top: 2500px" class="person Orlik Ephraim male VI VII VIII IX"><br>Давид (Орлик)</div>
+  <div id="AvraamDekart" style="left: 64px; top: 1865px" class="person Dekart Reuben male II III IV V VI"><br>Авраам (Декарт)</div>
+  <div id="JudifLilsla" style="left: 400px; top: 700px" class="person Lilsla Naphtali female I II"><br>Юдифь (Лильсла)</div>
+  <div id="AvessalomTeo" style="left: 3276px; top: 1140px" class="person Teo Ephraim male I II III"><br>Авессалом (Тео)</div>
+  <div id="SaraEjlin" style="left: 2454px; top: 976px" class="person Ejlin Benjamin female I II III"><br>Сара (Эйлин)</div>
+  <div id="IezekiilAndrej" style="left: 3280px; top: 2182px" class="person Andrej Ephraim male IV V VI VII VIII"><br>Иезекииль (Андрей)</div>
+  <div id="TirtsaNessa" style="left: 1103px; top: 1237px" class="person Nessa Ephraim female I II III IV"><br>Тирца (Нэсса)</div>
+  <div id="IlanaLuch" style="left: 150px; top: 1100px" class="person Luch Reuben female I II III IV V VI"><br>Илана (Луч)</div>
+  <div id="MoisejTeo" style="left: 2645.7220459px; top: 2918.67504883px" class="person Teo Manasseh male VIII IX X XI XII"><br>Моисей (Тео)</div>
+  <div id="ZelfaEvin" style="left: 3062px; top: 2272px" class="person Evin Zebulun female VII VIII"><br>Зелфа (Ёвин)</div>
+  <div id="ZelfaAtanja" style="left: 1543px; top: 3130px" class="person Atanja Asher female XII"><br>Зелфа (Атаня)</div>
+  <div id="Agoliav203" style="left: 1395px; top: 520px" class="person 203 Dan male I"><br>Аголиав (203)</div>
+  <div id="EfratVorobejka" style="left: 2458px; top: 1142px" class="person Vorobejka Issachar female I II III"><br>Ефрат (Воробейка)</div>
+  <div id="OraMarja" style="left: 3462px; top: 1112px" class="person Marja Dan female I II III IV"><br>Ора (Марья)</div>
+  <div id="AhinoamaMarja" style="left: 709px; top: 2150px" class="person Marja Levi female V VI VII VIII IX"><br>Ахиноама (Марья)</div>
+  <div id="AvelEfi" style="left: 2788px; top: 2545px" class="person Efi Issachar male VII"><br>Авель (Эфи)</div>
+  <div id="AvramAradursul" style="left: 2949px; top: 1100px" class="person Aradursul Zebulun male I II III"><br>Аврам (Арадурсул)</div>
+  <div id="RahilSeata" style="left: 1111px; top: 1774px" class="person Seata Benjamin female II III IV V VI VII"><br>Рахиль (Сеата)</div>
+  <div id="IsajjaX" style="left: 2792px; top: 416px" class="person X Benjamin male"><br>Исайя (X)</div>
+  <div id="RafailKroll" style="left: 2714.46008301px; top: 753.95703125px" class="person Kroll Benjamin male I"><br>Рафаил (Кролль)</div>
+  <div id="IlijaAradursul" style="left: 2106px; top: 2028px" class="person Aradursul Asher male IV V VI VII VIII"><br>Илия (Арадурсул)</div>
+  <div id="AvigejaVerdalin" style="left: 359px; top: 2563px" class="person Verdalin Levi female VI VII VIII IX X XI XII"><br>Авигея (Вердалин)</div>
+  <div id="KerenVerit" style="left: 99px; top: 925px" class="person Verit Reuben female I II III"><br>Керен (Верит)</div>
+  <div id="TalifaNessa" style="left: 1978px; top: 2032px" class="person Nessa Gad female V VI VII VIII IX X"><br>Талифа (Нэсса)</div>
+  <div id="EfaHelke" style="left: 1588px; top: 2404px" class="person Helke Issachar female VI VII VIII IX X XI XII"><br>Ефа (Хелькэ)</div>
+  <div id="AvraamUr" style="left: 1900px; top: 1900px" class="person Ur Gad female III IV V"><br>Авраам (Ур)</div>
+  <div id="IlijaVerit" style="left: 3450.70800781px; top: 2857.86303711px" class="person Verit Benjamin male IV V VI VII VIII"><br>Илия (Верит)</div>
+  <div id="SerahUr" style="left: 3280px; top: 1316px" class="person Ur Ephraim female I II"><br>Серах (Ур)</div>
+  <div id="ZaraX" style="left: 2634px; top: 1132px" class="person X Issachar male"><br>Зара (X)</div>
+  <div id="SalomejaMorlinks" style="left: 1259px; top: 2777px" class="person Morlinks Dan female XI XII"><br>Саломея (Морлинкс)</div>
+  <div id="MelhisujKamill" style="left: 340px; top: 2662px" class="person Kamill Reuben male IX"><br>Мелхисуй (Камилл)</div>
+  <div id="MiriamTajlami" style="left: 2563.71600342px; top: 2967.684021px" class="person Tajlami Manasseh female IX X XI"><br>Мириам (Тайлами)</div>
+  <div id="ElimelehGrej" style="left: 2839px; top: 2131px" class="person Grej Issachar male VI VII VIII IX X XI XII"><br>Елимелех (Грэй)</div>
+  <div id="PninaLuch" style="left: 1528px; top: 2698px" class="person Luch Dan female VII VIII IX X XI XII"><br>Пнина (Луч)</div>
+  <div id="EzekijaAndrej" style="left: 230px; top: 1086px" class="person Andrej Reuben male I II III"><br>Езекия (Андрей)</div>
+  <div id="ElishevaSanka" style="left: 2780px; top: 1314px" class="person Sanka Issachar female I II III IV V"><br>Елишева (Санька)</div>
+  <div id="AgoliavHelka" style="left: 1414px; top: 908px" class="person Helka Dan male III IV V VI VII"><br>Аголиав (Хэлка)</div>
+  <div id="RufVorobejka" style="left: 3169px; top: 2137px" class="person Vorobejka Manasseh female IV V VI VII VIII"><br>Руфь (Воробейка)</div>
+  <div id="RavaimFidel" style="left: 2726.90600586px; top: 3120.79199219px" class="person Fidel Zebulun male XI XII"><br>Раваим (Фидель)</div>
+  <div id="SolomonKirka" style="left: 1189px; top: 2798px" class="person Kirka Dan male XII"><br>Соломон (Кирка)</div>
+  <div id="MoisejBantses" style="left: 899px; top: 326px" class="person Bantses Levi male I II III"><br>Моисей (Банцес)</div>
+  <div id="BerijaElli" style="left: 1317px; top: 2631px" class="person Elli Dan male VII VIII IX"><br>Берия (Элли)</div>
+  <div id="IoannaKsju" style="left: 460.253997803px; top: 1297.26400757px" class="person Ksju Naphtali female I II III IV V"><br>Иоанна (Ксю)</div>
+  <div id="SulamitaSeata" style="left: 1443px; top: 2681px" class="person Seata Dan female VIII IX X XI XII"><br>Суламита (Сеата)</div>
+  <div id="NojAvelio" style="left: 3362px; top: 1302px" class="person Avelio Ephraim male I II III"><br>Ной (Авелио)</div>
+  <div id="FamarMargarita" style="left: 516px; top: 1044px" class="person Margarita Judah female I II III IV V"><br>Фамарь (Маргарита)</div>
+  <div id="IlanaRanven" style="left: 1605px; top: 2909px" class="person Ranven Naphtali female XII"><br>Илана (Ранвен)</div>
+  <div id="AvenirKamill" style="left: 1088px; top: 2811px" class="person Kamill Dan male XII"><br>Авенир (Камилл)</div>
+  <div style="position: fixed; background-color: white" onclick="alert(JSON.stringify(points));">save</div>
+ </body>
+ <script>
+  var context = document.getElementById('tree').getContext('2d');
+  context.lineJoin = "round";
+  redrawLinks();
+ </script>
+</html>

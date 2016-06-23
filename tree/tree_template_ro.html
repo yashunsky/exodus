@@ -1,0 +1,87 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <script>
+   var links_js = {{
+{links_js}
+   }}
+
+   var chars_js = {{
+{chars_js}
+   }}
+
+  function draw2ColorLine(points, color1, color2, width1, width2) {{
+      context.beginPath();    
+      context.moveTo(points[0][0], points[0][1]);
+      for (var i = 1; i < points.length; i ++) {{
+        context.lineTo(points[i][0], points[i][1]);
+      }}
+      context.lineWidth = width1;
+      context.strokeStyle = color1;
+      context.stroke();  
+
+      context.beginPath();    
+      context.moveTo(points[0][0], points[0][1]);
+      for (var i = 1; i < points.length; i ++) {{
+        context.lineTo(points[i][0], points[i][1]);
+      }}
+      context.lineWidth = width2;
+      context.strokeStyle = color2;
+      context.stroke();   
+  }}
+
+  function redrawLinks() {{
+    context.clearRect(0, 0, {width}, {height});
+
+    for (key in chars_js) {{
+      char_js = chars_js[key];
+      if (char_js[0] in links_js) {{
+        point = links_js[char_js[0]];
+        var x1 = point[2];
+        var y1 = point[3];
+        var x2 = char_js[1];
+        var y2 = char_js[2]
+
+        draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 4);
+
+      }}
+    }}
+
+    for (key in links_js) {{
+      link = links_js[key];
+      point = chars_js[link[0]];
+      var x1 = point[1];
+      var y1 = point[2];
+      var x2 = link[2];
+      var y2 = link[3];
+      point = chars_js[link[1]];
+      var x3 = point[1];
+      var y3 = point[2];
+
+      draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 16, 10);
+    }}
+
+
+    }}
+
+  </script>
+
+  <style>
+   .link {{position: absolute; width: 8px; height: 8px; margin-left: -4px; margin-top: -4px; border-radius: 4px; background-color: black}}
+   .person {{position: absolute; width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; border-radius: 36px; text-align: center; vertical-align: middle; border: gray 4px solid}}
+   .male {{background-color: #e8bef3}}
+   .female {{background-color: #caffd1}}
+  {tribes}
+  </style>
+ </head>
+ <title>Exodus 2016 - Tribes</title>
+ <body bgcolor="gray">
+  <div style="position: absolute; left: 0px; top: 0px; width:{width}px; height:{height}px"><canvas id="tree" width="{width}" height="{height}"></div>
+{links}
+{characters}
+ </body>
+ <script>
+  var context = document.getElementById('tree').getContext('2d');
+  redrawLinks();
+ </script>
+</html>
