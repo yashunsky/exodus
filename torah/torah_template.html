@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Exodus 2016 Torah</title>
-  <meta charset="utf-8">
+  <title>Torah :: Exodus 2016</title>
   <style>
     body {
       background: black;
@@ -11,12 +10,8 @@
       font-weight: bold;
     }
 
-    body, a {
+    body, a:link {
       color: white;
-    }
-
-    a, span {
-      text-decoration: none;
     }
 
     a:hover, a:active {
@@ -27,11 +22,15 @@
       color: gray;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     #scroll {
       position: absolute;
-      left: 0px;
-      top: 0px;
-      right: 0px;
+      left: 0;
+      top: 0;
+      right: 0;
       bottom: 4em;
       overflow: auto;
     }
@@ -47,8 +46,8 @@
     }
 
     #pageNumbers td {
-      font-size: x-large;
       text-align: center;
+      font-size: x-large;
       line-height: 0;
       padding: 1em 0 0.3em;
     }

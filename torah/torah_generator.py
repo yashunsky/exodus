@@ -53,10 +53,10 @@ def main():
     content_table = ' &nbsp;'.join([CONTENT_TEMPLATE.format(page = page)
                              for page in xrange(1, page_number)])
 
-    with open(TORAH_TEMPLATE_PATH, 'r') as f:
+    with open(TORAH_TEMPLATE_PATH, 'rb') as f:
         template = f.read()
 
-    with open(OUTPUT, 'w') as f:
+    with open(OUTPUT, 'wb') as f:
         f.write(template.replace('{anchor_row}', anchor_row)
                         .replace('{main_row}', main_row)
                         .replace('{content_table}', content_table))
