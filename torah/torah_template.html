@@ -1,18 +1,105 @@
+<!DOCTYPE html>
 <html>
- <title>Exodus 2016 Torah</title>
- <body style="background-color: #ece7ca">
-  <div style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 60px; overflow: scroll;">
-   <table border="0" cellspacing="0" cellpadding="0">
-    <tr height="{anchor_height}">
-     {anchor_row}
-    </tr>
-    <tr height="{page_height}">
-     {main_row}
-    </tr>
-   </table>
+<head>
+  <title>Exodus 2016 Torah</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: black;
+      font-family: Verdana, Helvetica, Sans-Serif;
+      font-size: large;
+      font-weight: bold;
+    }
+
+    body, a {
+      color: white;
+    }
+
+    a, span {
+      text-decoration: none;
+    }
+
+    a:hover, a:active {
+      color: red;
+    }
+
+    a:visited {
+      color: gray;
+    }
+
+    #scroll {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      right: 0px;
+      bottom: 4em;
+      overflow: auto;
+    }
+
+    #scroll table {
+      border: none;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    #scroll td {
+      padding: 0;
+    }
+
+    #pageNumbers td {
+      font-size: x-large;
+      text-align: center;
+      line-height: 0;
+      padding: 1em 0 0.3em;
+    }
+
+    #pageNumbers img {
+      height: 1px;
+    }
+
+    #pages img {
+      height: 1725px;
+    }
+
+    #contents {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4em;
+    }
+
+    #contents div {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+
+    #contents div p {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0.3em 1.5em 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scroll">
+    <table>
+      <tr id="pageNumbers">
+        {anchor_row}
+      </tr>
+      <tr id="pages">
+        {main_row}
+      </tr>
+    </table>
   </div>
-  <div style="width: 900px; height: 60px; position: absolute; left: 50%; margin-left: -450px; bottom:0px; text-align: center;">
-  {content_table}
+  <div id="contents">
+    <div>
+      <p>
+        {content_table}
+      </p>
+    </div>
   </div>
- </body>
+</body>
 </html>

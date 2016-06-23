@@ -12,26 +12,22 @@ OUTPUT = 'index.html'
 PAGE_HEIGHT = 1725
 PAGE_WIDTH = 1241
 
-ANCHOR_HEIGHT = 10
-
-MAIN_TEMPLATE = '<td colspan="{colspan}"><img src="{filename}" width="{width}" height="{height}"></td>'
-ANCHOR_TEMPLATE = '<td align="center" width="{width}"><a name="{page}">{page}<br><img src="1x1.png" width="{width}" height="1"></a></td>'
+ANCHOR_TEMPLATE = '<td id="{page}">{page}<br><img alt="" src="1x1.png" style="width: {width}px"></td>'
+MAIN_TEMPLATE = '<td colspan="{colspan}"><img alt="" src="{filename}" style="width: {width}px"></td>'
 CONTENT_TEMPLATE = '<a href="#{page}">{page}</a>'
 
-
 def main_row_segment(filename, width, height, pages_count):
-    return MAIN_TEMPLATE.format(colspan=pages_count,
-                                filename=filename,
-                                width=width,
-                                height=height)
-
+    return MAIN_TEMPLATE.format(colspan = pages_count,
+                                filename = filename,
+                                width = width,
+                                height = height)
 
 def anchor_row_segment(width, pages_count, start_number):
-    return ''.join([ANCHOR_TEMPLATE.format(width=width / pages_count, page=page) for page
-                    in xrange(start_number, start_number + pages_count)])
+    return ''.join([ANCHOR_TEMPLATE.format(width = width / pages_count, page = page)
+                    for page in xrange(start_number, start_number + pages_count)])
 
-if __name__ == '__main__':
-    _, _, filenames = walk(PARTS_PATH).next()
+def main():
+    (_, _, filenames) = walk(PARTS_PATH).next()
     filenames = [join(PARTS_PATH, f)
                  for f in sorted(filenames) if f.endswith('.jpg')]
 
@@ -42,7 +38,7 @@ if __name__ == '__main__':
 
     for filename in filenames:
         img = Image.open(filename)
-        width, height = img.size
+        (width, height) = img.size
         assert height == PAGE_HEIGHT
 
         pages_count = int(round(float(width) / PAGE_WIDTH))
@@ -50,21 +46,20 @@ if __name__ == '__main__':
         if pages_count == 9:
             pages_count = 10  # hack for long tapes troubles
 
-        main_row += main_row_segment(filename, width, height, pages_count)
+        main_row += main_row_segment(filename.replace('\\', '/'), width, height, pages_count)
         anchor_row += anchor_row_segment(width, pages_count, page_number)
         page_number += pages_count
 
-    content_table = ' '.join([CONTENT_TEMPLATE.format(page=page)
+    content_table = ' &nbsp;'.join([CONTENT_TEMPLATE.format(page = page)
                              for page in xrange(1, page_number)])
 
-    torah_width = PAGE_WIDTH * 2
-    torah_height = PAGE_HEIGHT + ANCHOR_HEIGHT * 2
+    with open(TORAH_TEMPLATE_PATH, 'r') as f:
+        template = f.read()
 
-    with open(TORAH_TEMPLATE_PATH, 'r') as t:
-        template = t.read()
-        with open(OUTPUT, 'w') as o:
-            o.write(template.format(page_height=PAGE_HEIGHT,
-                                    anchor_height=ANCHOR_HEIGHT,
-                                    main_row=main_row,
-                                    anchor_row=anchor_row,
-                                    content_table=content_table))
+    with open(OUTPUT, 'w') as f:
+        f.write(template.replace('{anchor_row}', anchor_row)
+                        .replace('{main_row}', main_row)
+                        .replace('{content_table}', content_table))
+
+if __name__ == '__main__':
+    main()
