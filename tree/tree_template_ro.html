@@ -4,11 +4,20 @@
   <script>
    var links_js = {{
 {links_js}
-   }}
+   }};
 
    var chars_js = {{
 {chars_js}
-   }}
+   }};
+
+   var fosters = [
+{fosters_js}    
+   ];
+
+   var points = {{
+    chars: chars_js,
+    links: links_js
+   }};
 
   function draw2ColorLine(points, color1, color2, width1, width2) {{
       context.beginPath();    
@@ -42,7 +51,7 @@
         var x2 = char_js[1];
         var y2 = char_js[2]
 
-        draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 4);
+        draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 6);
 
       }}
     }}
@@ -58,30 +67,75 @@
       var x3 = point[1];
       var y3 = point[2];
 
-      draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 16, 10);
+      draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 12, 8);
     }}
 
+    for (var i = 0; i < fosters.length; i++) {{
+      var f = fosters[i];
+      var x1 = chars_js[f[0]][1];
+      var y1 = chars_js[f[0]][2];
+      if (f[1] == 'c') {{
+        var x2 = chars_js[f[2]][1];
+        var y2 = chars_js[f[2]][2];
+      }} else {{
+        var x2 = links_js[f[2]][2];
+        var y2 = links_js[f[2]][3];
+      }}
 
+      var xm = (x1 + x2) / 2;
+      var ym = (y1 + y2) / 2;
+
+      draw2ColorLine([[x1, y1], [xm, ym]], '#AA8888', '#000000', 4, 2);
+      draw2ColorLine([[xm, ym], [x2, y2]], '#AA8888', '#000000', 8, 4);
+
+    }}
+
+    }}
+
+    function centerLables () {{
+      for (key in chars_js) {{
+        var e = document.getElementById(key);
+        e.style.left = chars_js[key][1] - e.clientWidth / 2;
+        e.style.top = chars_js[key][2] - e.clientHeight / 2;
+      }}      
     }}
 
   </script>
 
   <style>
    .link {{position: absolute; width: 8px; height: 8px; margin-left: -4px; margin-top: -4px; border-radius: 4px; background-color: black}}
-   .person {{position: absolute; width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; border-radius: 36px; text-align: center; vertical-align: middle; border: gray 4px solid}}
+   .person {{position: absolute; border-radius: 6px; border: gray 4px solid; padding: 2px; text-align: center;}}
    .male {{background-color: #e8bef3}}
    .female {{background-color: #caffd1}}
   {tribes}
   </style>
  </head>
- <title>Exodus 2016 - Tribes</title>
  <body bgcolor="gray">
+  <div id="main" style="transform: scale({scale}, {scale})">
   <div style="position: absolute; left: 0px; top: 0px; width:{width}px; height:{height}px"><canvas id="tree" width="{width}" height="{height}"></div>
 {links}
 {characters}
+   </div>
+  <div style="position: fixed; background-color: white">
+    <input type="button" value="+" onClick="changeScale(1)">
+    <input type="button" value="-" onClick="changeScale(-1)">
+  </div>
  </body>
  <script>
+  var scale = 1;
+  var scaleStep = 1.1;
   var context = document.getElementById('tree').getContext('2d');
+  var main = document.getElementById('main');
+  context.lineJoin = "round";
   redrawLinks();
+  centerLables(); 
+  function changeScale(dir) {{
+    if (dir > 0) {{
+      scale *= scaleStep;
+    }} else {{
+      scale /= scaleStep;
+    }}
+      main.style.transform = 'scale(' + scale + ', ' + scale + ')';
+  }} 
  </script>
 </html>
