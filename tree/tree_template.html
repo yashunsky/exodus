@@ -1,4 +1,4 @@
-<html>
+<html lang="ru">
  <head>
   <title>Ancestry :: Exodus 2016</title>
   <meta charset="utf-8">
@@ -14,145 +14,135 @@
    }};
 
    var fosters = [
-{fosters_js}    
+{fosters_js}
    ];
 
    var points = {{
-    chars: chars_js,
-    links: links_js
+     chars: chars_js,
+     links: links_js
    }};
 
-  $(function() {{
-    $( ".person" ).draggable({{
-      drag: function( event, ui ) {{
-        var key = ui.helper[0].id;
-        var x = ui.position.left + ui.helper[0].clientWidth/2;
-        var y = ui.position.top + ui.helper[0].clientHeight/2;
-        if (!(key in chars_js)) {{
-          alert(key);
-        }}
-        chars_js[key][1] = x;
-        chars_js[key][2] = y;
-        redrawLinks();          
-      }}
-    }});
-    $( ".link" ).draggable({{
-      drag: function( event, ui ) {{
-        var key = ui.helper[0].id;
-        var x = ui.position.left;
-        var y = ui.position.top;
-        links_js[key][2] = x;
-        links_js[key][3] = y;
-        redrawLinks();
-      }}      
-    }});
-  }});
+   $(function() {{
+     $( ".person" ).draggable({{
+       drag: function( event, ui ) {{
+         var key = ui.helper[0].id;
+         var x = ui.position.left + ui.helper[0].clientWidth/2;
+         var y = ui.position.top + ui.helper[0].clientHeight/2;
+         if (!(key in chars_js)) {{
+           alert(key);
+         }}
+         chars_js[key][1] = x;
+         chars_js[key][2] = y;
+         redrawLinks();
+       }}
+     }});
+     $( ".link" ).draggable({{
+       drag: function( event, ui ) {{
+         var key = ui.helper[0].id;
+         var x = ui.position.left;
+         var y = ui.position.top;
+         links_js[key][2] = x;
+         links_js[key][3] = y;
+         redrawLinks();
+       }}
+     }});
+   }});
 
-  function draw2ColorLine(points, color1, color2, width1, width2) {{
-      context.beginPath();    
-      context.moveTo(points[0][0], points[0][1]);
-      for (var i = 1; i < points.length; i ++) {{
-        context.lineTo(points[i][0], points[i][1]);
-      }}
-      context.lineWidth = width1;
-      context.strokeStyle = color1;
-      context.stroke();  
+   function draw2ColorLine(points, color1, color2, width1, width2) {{
+     context.beginPath();
+     context.moveTo(points[0][0], points[0][1]);
+     for (var i = 1; i < points.length; i ++) {{
+       context.lineTo(points[i][0], points[i][1]);
+     }}
+     context.lineWidth = width1;
+     context.strokeStyle = color1;
+     context.stroke();
 
-      context.beginPath();    
-      context.moveTo(points[0][0], points[0][1]);
-      for (var i = 1; i < points.length; i ++) {{
-        context.lineTo(points[i][0], points[i][1]);
-      }}
-      context.lineWidth = width2;
-      context.strokeStyle = color2;
-      context.stroke();   
-  }}
+     context.beginPath();
+     context.moveTo(points[0][0], points[0][1]);
+     for (var i = 1; i < points.length; i ++) {{
+       context.lineTo(points[i][0], points[i][1]);
+     }}
+     context.lineWidth = width2;
+     context.strokeStyle = color2;
+     context.stroke();
+   }}
 
-  function redrawLinks() {{
-    context.clearRect(0, 0, {width}, {height});
+   function redrawLinks() {{
+     context.clearRect(0, 0, {width}, {height});
+     for (key in chars_js) {{
+       char_js = chars_js[key];
+       if (char_js[0] in links_js) {{
+         point = links_js[char_js[0]];
+         var x1 = point[2];
+         var y1 = point[3];
+         var x2 = char_js[1];
+         var y2 = char_js[2]
+         draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 6);
+       }}
+     }}
 
-    for (key in chars_js) {{
-      char_js = chars_js[key];
-      if (char_js[0] in links_js) {{
-        point = links_js[char_js[0]];
-        var x1 = point[2];
-        var y1 = point[3];
-        var x2 = char_js[1];
-        var y2 = char_js[2]
+     for (key in links_js) {{
+       link = links_js[key];
+       point = chars_js[link[0]];
+       var x1 = point[1];
+       var y1 = point[2];
+       var x2 = link[2];
+       var y2 = link[3];
+       point = chars_js[link[1]];
+       var x3 = point[1];
+       var y3 = point[2];
+       draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 12, 8);
+     }}
 
-        draw2ColorLine([[x1, y1], [x2, y2]], '#000000', '#FFFFFF', 10, 6);
+     for (var i = 0; i < fosters.length; i++) {{
+       var f = fosters[i];
+       var x1 = chars_js[f[0]][1];
+       var y1 = chars_js[f[0]][2];
+       if (f[1] == 'c') {{
+         var x2 = chars_js[f[2]][1];
+         var y2 = chars_js[f[2]][2];
+       }} else {{
+         var x2 = links_js[f[2]][2];
+         var y2 = links_js[f[2]][3];
+       }}
+       var xm = (x1 + x2) / 2;
+       var ym = (y1 + y2) / 2;
+       draw2ColorLine([[x1, y1], [xm, ym]], '#AA8888', '#000000', 4, 2);
+       draw2ColorLine([[xm, ym], [x2, y2]], '#AA8888', '#000000', 8, 4);
+     }}
+   }}
 
-      }}
-    }}
-
-
-
-    for (key in links_js) {{
-      link = links_js[key];
-      point = chars_js[link[0]];
-      var x1 = point[1];
-      var y1 = point[2];
-      var x2 = link[2];
-      var y2 = link[3];
-      point = chars_js[link[1]];
-      var x3 = point[1];
-      var y3 = point[2];
-
-      draw2ColorLine([[x1, y1], [x2, y2], [x3, y3]], '#FFFFFF', '#000000', 12, 8);
-    }}
-
-    for (var i = 0; i < fosters.length; i++) {{
-      var f = fosters[i];
-      var x1 = chars_js[f[0]][1];
-      var y1 = chars_js[f[0]][2];
-      if (f[1] == 'c') {{
-        var x2 = chars_js[f[2]][1];
-        var y2 = chars_js[f[2]][2];
-      }} else {{
-        var x2 = links_js[f[2]][2];
-        var y2 = links_js[f[2]][3];
-      }}
-
-      var xm = (x1 + x2) / 2;
-      var ym = (y1 + y2) / 2;
-
-      draw2ColorLine([[x1, y1], [xm, ym]], '#AA8888', '#000000', 4, 2);
-      draw2ColorLine([[xm, ym], [x2, y2]], '#AA8888', '#000000', 8, 4);
-
-    }}
-
-    }}
-
-    function centerLables () {{
-      for (key in chars_js) {{
-        var e = document.getElementById(key);
-        e.style.left = chars_js[key][1] - e.clientWidth / 2;
-        e.style.top = chars_js[key][2] - e.clientHeight / 2;
-      }}      
-    }}
-
+   function centerLables () {{
+     for (key in chars_js) {{
+       var e = document.getElementById(key);
+       e.style.left = chars_js[key][1] - e.clientWidth / 2;
+       e.style.top = chars_js[key][2] - e.clientHeight / 2;
+     }}
+   }}
   </script>
-
   <style>
+   body {{background-color: gray}}
    .link {{position: absolute; width: 8px; height: 8px; margin-left: -4px; margin-top: -4px; border-radius: 4px; background-color: black}}
-   .person {{position: absolute; border-radius: 6px; border: gray 4px solid; padding: 2px; text-align: center;}}
+   .torah {{border: none; width: 32px; height: 17px; vertical-align: bottom; padding-bottom: 0.1em}}
+   .person {{position: absolute; border-radius: 6px; border: gray 4px solid; padding: 2px; text-align: center}}
    .male {{background-color: #e8bef3}}
    .female {{background-color: #caffd1}}
-  {tribes}
+{tribes}
   </style>
  </head>
- <body bgcolor="gray">
+ <body>
   <div id="main" style="transform: scale({scale}, {scale})">
-  <div style="position: absolute; left: 0px; top: 0px; width:{width}px; height:{height}px"><canvas id="tree" width="{width}" height="{height}"></div>
+   <div style="position: absolute; left: 0px; top: 0px; width:{width}px; height:{height}px"><canvas id="tree" width="{width}" height="{height}"></canvas></div>
 {links}
 {characters}
-   </div>
+  </div>
   <div style="position: fixed; background-color: white" onclick="alert(JSON.stringify(points));">save</div>
+  <script>
+   var context = document.getElementById('tree').getContext('2d');
+   context.lineJoin = "round";
+   redrawLinks();
+   centerLables();
+  </script>
  </body>
- <script>
-  var context = document.getElementById('tree').getContext('2d');
-  context.lineJoin = "round";
-  redrawLinks();
-  centerLables();  
- </script>
 </html>

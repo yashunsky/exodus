@@ -53,19 +53,18 @@ TRIBES_COLORS = {'Reuben': ['white', 'red'],
 
 GENDER = {u'М': 'male', u'Ж': 'female'}
 
-AGES = ['I', 'II', 'III', 'IV', 'V', 'VI',
-        'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+AGES = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
 
 CSS_TEMPLATE = ('   .{tribe} {{border-left-color: {color_1};' +
                 ' border-top-color: {color_1};' +
                 ' border-right-color: {color_2};' +
                 ' border-bottom-color: {color_2}}}')
 
-CHARACTER_TEMPLATE = u'  <div id="{id}" style="left: {x}px; top: {y}px" class="{classes}">{name}{torah}</div>'
+CHARACTER_TEMPLATE = u'   <div id="{id}" style="left: {x}px; top: {y}px" class="{classes}">{name}{torah}</div>'
 
-TORAH_TEMPLATE = u'<a href="http://jolaf.jnm.ru/exodus/torah/#{page}"><img src="images/torah.png" border="0" width="32" height="17"></a>'
+TORAH_TEMPLATE = u'<a href="http://jolaf.jnm.ru/exodus/torah/#{page}"><img alt="[тора]" class="torah" src="images/torah.png"></a>'
 
-LINK_TEMPLATE = u'  <div id="{id}" style="left: {x}px; top: {y}px" class="link">&nbsp</div>'
+LINK_TEMPLATE = u'   <div id="{id}" style="left: {x}px; top: {y}px" class="link">&nbsp;</div>'
 
 WIDTH = 4000
 HEIGHT = 4000
@@ -103,7 +102,7 @@ def to_id(text):
 
 
 def get_ages(ages):
-    if (ages[0] and ages[1]):
+    if ages[0] and ages[1]:
         ages = [int(a) for a in ages]
         min_age = ages[0]  # sum(ages) / 2
         if ages[0] < 0:
@@ -163,7 +162,7 @@ def parse_line(line, add_char):
     else:
         x, y = get_coord(tribe, min_age)
 
-    if (len(parents) == 1):
+    if len(parents) == 1:
         id_p = list(parents)[0]
         id_c = id_p + 'C'
         add_char(id_c)
