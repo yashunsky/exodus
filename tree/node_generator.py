@@ -61,7 +61,9 @@ CSS_TEMPLATE = ('   .{tribe} {{border-left-color: {color_1};' +
                 ' border-right-color: {color_2};' +
                 ' border-bottom-color: {color_2}}}')
 
-CHARACTER_TEMPLATE = u'  <div id="{id}" style="left: {x}px; top: {y}px" class="{classes}">{name}</div>'
+CHARACTER_TEMPLATE = u'  <div id="{id}" style="left: {x}px; top: {y}px" class="{classes}">{name}{torah}</div>'
+
+TORAH_TEMPLATE = u'<a href="http://jolaf.jnm.ru/exodus/torah/#{page}"><img src="images/torah.png" border="0" width="32" height="17"></a>'
 
 LINK_TEMPLATE = u'  <div id="{id}" style="left: {x}px; top: {y}px" class="link">&nbsp</div>'
 
@@ -131,6 +133,9 @@ def parse_line(line, add_char):
     ages, min_age = get_ages(values[8:10])
 
     post = values[10]
+    torah = values[11]
+
+    torah = TORAH_TEMPLATE.format(page=torah) if torah.isdigit() else ''
 
     classes = [nick, birth_tribe, gender] + ages
 
@@ -165,7 +170,7 @@ def parse_line(line, add_char):
         parents = frozenset({id_p, id_c})
 
     return {'id': id, 'name': name, 'gender': gender,
-            'parents': parents, 'fosters': fosters, 'post': post,
+            'parents': parents, 'fosters': fosters, 'post': post, 'torah': torah,
             'classes': classes, 'x': x, 'y': y, 'tribe': tribe, 'age': min_age}
 
 if __name__ == '__main__':
