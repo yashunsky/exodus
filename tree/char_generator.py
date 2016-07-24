@@ -60,7 +60,7 @@ if __name__ == '__main__':
                     save_character(characters, parent, None)
             else:
                 if character_info is not None:
-                    character_info['stop'] = i
+                    character_info['stop'] = i # pylint: disable=E1136
 
         save_character(characters, character_name, character_info)
 

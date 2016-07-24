@@ -12,9 +12,8 @@ from transliterate import translit
 
 SOURCE = u"source/Исход 2016_ Персонажи - Sheet1.tsv"
 
-TREE_TEMPLATE = "tree_template_ro.html"
-
-OUTPUT = "output/tree_ro.html"
+FILES = (("tree_template.html", "output/tree.html"),
+         ("tree_template_ro.html", "output/tree_ro.html"))
 
 COORDS = "overwriteCoords.json"
 
@@ -140,7 +139,7 @@ def parse_line(line, add_char):
 
     classes = ['person'] + [c for c in classes if c is not None]
 
-    classes = ' '.join(classes)
+    classes = ' '.join(classes) # pylint: disable=R0204
 
     def get_html_name():
         if '?' in name:
@@ -311,16 +310,17 @@ if __name__ == '__main__':
     links_js = u',\n'.join(get_links_js({l['id']: l for l in links}))
     fosters_js = u',\n'.join(get_fosters_js(characters))
 
-    with open(TREE_TEMPLATE, 'r') as t:
-        template = unicode(t.read())
-        text = template.format(width=WIDTH,
-                               height=HEIGHT,
-                               scale=HTML_SCALE,
-                               tribes=u'\n'.join(css),
-                               chars_js=chars_js,
-                               links_js=links_js,
-                               fosters_js=fosters_js,
-                               characters=u'\n'.join(characters_html),
-                               links=u'\n'.join(links_html))
-        with open(OUTPUT, 'w') as o:
-            o.write(text.encode('utf-8'))
+    for (template, output) in FILES:
+        with open(template) as t:
+            template = unicode(t.read())
+            text = template.format(width=WIDTH,
+                                   height=HEIGHT,
+                                   scale=HTML_SCALE,
+                                   tribes=u'\n'.join(css),
+                                   chars_js=chars_js,
+                                   links_js=links_js,
+                                   fosters_js=fosters_js,
+                                   characters=u'\n'.join(characters_html),
+                                   links=u'\n'.join(links_html))
+            with open(output, 'w') as o:
+                o.write(text.encode('utf-8'))
