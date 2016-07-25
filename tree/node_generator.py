@@ -9,11 +9,14 @@ from random import random
 
 from transliterate import translit
 
+import svgwrite
 
 SOURCE = u"source/Исход 2016_ Персонажи - Sheet1.tsv"
 
 FILES = (("tree_template.html", "output/tree.html"),
          ("tree_template_ro.html", "output/tree_ro.html"))
+
+SVG = "output/tree.svg"
 
 COORDS = "overwriteCoords.json"
 
@@ -139,7 +142,15 @@ def parse_line(line, add_char):
 
     classes = ['person'] + [c for c in classes if c is not None]
 
-    classes = ' '.join(classes) # pylint: disable=R0204
+    classes = ' '.join(classes)  # pylint: disable=R0204
+
+    def get_plain_text_name():
+        if '?' in name:
+            return '?'
+        elif 'X' in values[0]:
+            return name
+        else:
+            return values[0]
 
     def get_html_name():
         if '?' in name:
@@ -167,7 +178,7 @@ def parse_line(line, add_char):
         add_char(id_c)
         parents = frozenset({id_p, id_c})
 
-    return {'id': id, 'name': name, 'gender': gender,
+    return {'id': id, 'name': name, 'plain_text_name': get_plain_text_name(), 'gender': gender,
             'parents': parents, 'fosters': fosters, 'post': post, 'torah': torah,
             'classes': classes, 'x': x, 'y': y, 'tribe': tribe, 'age': min_age}
 
@@ -239,6 +250,7 @@ if __name__ == '__main__':
         couple = copy(original)
         couple['id'] = id_c
         couple['name'] = '&nbsp;?&nbsp;'
+        couple['plain_text_name'] = '?'
         couple['gender'] = 'female' if original['gender'] == 'male' else 'male'
         if id_c in presetCoords['chars']:
             couple['x'] = presetCoords['chars'][id_c][1] * PRESCALE
@@ -324,3 +336,54 @@ if __name__ == '__main__':
                                    links=u'\n'.join(links_html))
             with open(output, 'w') as o:
                 o.write(text.encode('utf-8'))
+
+    dwg = svgwrite.Drawing(SVG, profile='tiny', size=(u'%dpx' % WIDTH,
+                                                      u'%dpx' % HEIGHT))
+
+    svg_links = svgwrite.container.Group()
+    svg_chars = svgwrite.container.Group()
+    svg_fosters = svgwrite.container.Group()
+    svg_birthes = svgwrite.container.Group()
+    for link in links:
+        c1, c2 = (characters[key] for key in link['id'].split('_'))
+        svg_links.add(dwg.polyline([(c1['x'], c1['y']),
+                                    (link['x'], link['y']),
+                                    (c2['x'], c2['y'])],
+                                   stroke='red', fill='none'))
+
+    links_dict = {link['id']: link for link in links}
+
+    def add_foster_line(dwg, character, foster):
+        svg_fosters.add(dwg.polyline([(foster['x'], foster['y']),
+                                      (character['x'], character['y'])],
+                                     stroke='blue', fill='none'))
+
+    for character in characters.values():
+        if character['parents']:
+            link = links_dict['_'.join(sorted(character['parents']))]
+            svg_birthes.add(dwg.polyline([(link['x'], link['y']),
+                                          (character['x'], character['y'])],
+                                         stroke='green', fill='none'))
+
+        svg_chars.add(dwg.text(character['plain_text_name'],
+                               insert=(character['x'], character['y']),
+                               text_anchor='middle',
+                               fill='black'))
+
+        if character['fosters']:
+            if len(character['fosters']) == 1:
+                add_foster_line(dwg, character,
+                                characters[list(character['fosters'])[0]])
+            else:
+                link_id = '_'.join(sorted(character['fosters']))
+                if link_id in links_dict:
+                    add_foster_line(dwg, character, links_dict[link_id])
+                else:
+                    for f in character['fosters']:
+                        add_foster_line(dwg, character, characters[f])
+
+    dwg.add(svg_links)
+    dwg.add(svg_birthes)
+    dwg.add(svg_fosters)
+    dwg.add(svg_chars)
+    dwg.save()
