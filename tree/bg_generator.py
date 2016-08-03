@@ -72,6 +72,15 @@ if __name__ == '__main__':
         x = int(c['x'] * SCALE - tile_w / 2)
         y = int(c['y'] * SCALE - tile_h / 2)
 
+        if x < 0:
+            x = 0
+        if x > WIDTH - tile_w:
+            x = WIDTH - tile_w
+        if y < 0:
+            y = 0
+        if y > HEIGHT - tile_h:
+            y = HEIGHT - tile_h
+
         layer_id = 0
         while True:
             if len(layers) == layer_id:
