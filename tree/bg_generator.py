@@ -14,9 +14,10 @@ from node_generator import get_characters, add_couples
 
 PATH = 'source/tiles'
 
-SCALE = 2
+SCALE = 1
 WIDTH, HEIGHT = int(4200 * SCALE), int(3500 * SCALE)
 
+MARGIN = 5
 
 def get_name(filename):
     return filename.split('_', 2)[2].split('.')[0]
@@ -72,14 +73,14 @@ if __name__ == '__main__':
         x = int(c['x'] * SCALE - tile_w / 2)
         y = int(c['y'] * SCALE - tile_h / 2)
 
-        if x < 0:
-            x = 0
-        if x > WIDTH - tile_w:
-            x = WIDTH - tile_w
-        if y < 0:
-            y = 0
-        if y > HEIGHT - tile_h:
-            y = HEIGHT - tile_h
+        if x < MARGIN:
+            x = MARGIN
+        if x > WIDTH - tile_w - MARGIN:
+            x = WIDTH - tile_w - MARGIN
+        if y < MARGIN:
+            y = MARGIN
+        if y > HEIGHT - tile_h - MARGIN:
+            y = HEIGHT - tile_h - MARGIN
 
         layer_id = 0
         while True:
@@ -87,7 +88,9 @@ if __name__ == '__main__':
                 layers.append(Image.new('RGBA', (WIDTH, HEIGHT)))
 
             destination = layers[layer_id]
-            place = destination.crop((x, y, x + tile_w, y + tile_h))
+            place = destination.crop((x - MARGIN, y - MARGIN,
+                                      x + tile_w + MARGIN,
+                                      y + tile_h + MARGIN))
             if place.getcolors(1) is None:
                 layer_id += 1
             else:
