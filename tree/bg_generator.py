@@ -14,7 +14,7 @@ from node_generator import get_characters, add_couples
 
 PATH = 'source/tiles'
 
-SCALE = 6
+SCALE = 2
 WIDTH, HEIGHT = int(4200 * SCALE), int(3500 * SCALE)
 
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     add_couples(characters, additional)
 
-    big_image = Image.new('RGBA', (WIDTH, HEIGHT))
+    layers = []
 
     font = ImageFont.truetype("arial.ttf", 38)
 
@@ -71,6 +71,19 @@ if __name__ == '__main__':
 
         x = int(c['x'] * SCALE - tile_w / 2)
         y = int(c['y'] * SCALE - tile_h / 2)
-        big_image.paste(tile, (x, y))
 
-    big_image.save('output/big_tree.png', 'PNG')
+        layer_id = 0
+        while True:
+            if len(layers) == layer_id:
+                layers.append(Image.new('RGBA', (WIDTH, HEIGHT)))
+
+            destination = layers[layer_id]
+            place = destination.crop((x, y, x + tile_w, y + tile_h))
+            if place.getcolors(1) is None:
+                layer_id += 1
+            else:
+                destination.paste(tile, (x, y))
+                break
+
+    for layer_id, layer in enumerate(layers):
+        layer.save('output/big_tree_layer_%d.png' % layer_id, 'PNG')
