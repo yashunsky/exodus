@@ -9,14 +9,10 @@ from random import random
 
 from transliterate import translit
 
-import svgwrite
-
 SOURCE = u"source/Исход 2016_ Персонажи - Sheet1.tsv"
 
 FILES = (("tree_template.html", "output/tree.html"),
          ("tree_template_ro.html", "output/tree_ro.html"))
-
-SVG = "output/tree.svg"
 
 COORDS = "overwriteCoords.json"
 
@@ -183,7 +179,7 @@ def parse_line(line, add_char):
             'classes': classes, 'x': x, 'y': y, 'tribe': tribe, 'birth_tribe': birth_tribe, 'age': min_age}
 
 
-def get_characters():
+def get_characters_and_links():
     with open(SOURCE, 'r') as f:
         lines = f.read().decode('utf-8').replace('\r', '').split('\n')
 
@@ -191,7 +187,42 @@ def get_characters():
 
     characters = [parse_line(line, additional.add) for line in lines[1:]]
 
-    return characters, additional
+    childfree = [c for c in characters if c['id'] == '']
+
+    characters = [c for c in characters if c['id']]
+
+    characters = {c['id']: c for c in characters}
+
+    add_couples(characters, additional)
+
+    return characters, get_links(characters, childfree)
+
+
+def get_links(characters, childfree):
+
+    links = set(character['parents'] for character in characters.values())
+
+    links = links.union(set(c['parents'] for c in childfree))
+
+    def get_link(link):
+        id = '_'.join(sorted(link))
+        if id in presetCoords['links']:
+            x, y = presetCoords['links'][id][2:]
+
+            x, y = x * PRESCALE, y * PRESCALE
+        else:
+            parents = [characters[l] for l in link]
+            xs = [p['x'] for p in parents]
+            ys = [p['y'] for p in parents]
+            x = sum(xs) / len(xs)
+            y = sum(ys) / len(ys)
+
+            y = max(ys) + 32  # char_height * (0.5 if len(link) == 2 else 0.25)
+        return {'id': id, 'x': x, 'y': y}
+
+    links = [get_link(link) for link in links if link]
+
+    return links
 
 
 def add_couples(characters, additional):
@@ -215,89 +246,59 @@ def add_couples(characters, additional):
 
 
 if __name__ == '__main__':
-    characters, additional = get_characters()
+    characters, links = get_characters_and_links()
 
     css = [CSS_TEMPLATE.format(tribe=tribe, color_1=color_1, color_2=color_2)
            for tribe, (color_1, color_2) in TRIBES_COLORS.items()]
 
-    childfree = [c for c in characters if c['id'] == '']
+    # tribe_matrix = {}
 
-    characters = [c for c in characters if c['id']]
+    # for age in xrange(-7, 12):
+    #     for tribe in [None] + TRIBES_ORDER:
+    #         tribe_matrix[age, tribe] = []
 
-    tribe_matrix = {}
+    # for c in characters:
+    #     tribe_matrix[c['age'], c['tribe']].append(c)
 
-    for age in xrange(-7, 12):
-        for tribe in [None] + TRIBES_ORDER:
-            tribe_matrix[age, tribe] = []
+    # tribes_width = [max([len(tribe_matrix[age, tribe])
+    #                      for age in xrange(-7, 12)])
+    #                 for tribe in [None] + TRIBES_ORDER]
 
-    for c in characters:
-        tribe_matrix[c['age'], c['tribe']].append(c)
+    # offsets = [sum(tribes_width[:i]) for i in xrange(len(tribes_width))]
+    # offsets = {key: value for key, value
+    #            in zip([None] + TRIBES_ORDER, offsets)}
 
-    tribes_width = [max([len(tribe_matrix[age, tribe])
-                         for age in xrange(-7, 12)])
-                    for tribe in [None] + TRIBES_ORDER]
+    # tribes_width = {key: value for key, value
+    #                 in zip([None] + TRIBES_ORDER, tribes_width)}
 
-    offsets = [sum(tribes_width[:i]) for i in xrange(len(tribes_width))]
-    offsets = {key: value for key, value
-               in zip([None] + TRIBES_ORDER, offsets)}
+    # char_width = 200
+    # char_height = 400
 
-    tribes_width = {key: value for key, value
-                    in zip([None] + TRIBES_ORDER, tribes_width)}
+    # for age in xrange(-7, 12):
+    #     for tribe in [None] + TRIBES_ORDER:
+    #         tribe_row = sorted(tribe_matrix[age, tribe],
+    #                            key=lambda c: c['gender'])
 
-    char_width = 200
-    char_height = 400
+    #         center_offset = 0.5 * (tribes_width[tribe] - len(tribe_row))
 
-    for age in xrange(-7, 12):
-        for tribe in [None] + TRIBES_ORDER:
-            tribe_row = sorted(tribe_matrix[age, tribe],
-                               key=lambda c: c['gender'])
+    #         offset = offsets[tribe] + center_offset
 
-            center_offset = 0.5 * (tribes_width[tribe] - len(tribe_row))
+    #         for index, character in enumerate(tribe_row):
+    #             if character['id'] not in presetCoords['chars']:
+    #                 character['x'] = ((offset + index) * char_width +
+    #                                   (char_width / 2))
+    #                 character['y'] = (((age + 7) * char_height) +
+    #                                   char_height / 2)
 
-            offset = offsets[tribe] + center_offset
+    # WIDTH = (sum(tribes_width.values()) + 1) * char_width
+    # HEIGHT = 19 * char_height
 
-            for index, character in enumerate(tribe_row):
-                if character['id'] not in presetCoords['chars']:
-                    character['x'] = ((offset + index) * char_width +
-                                      (char_width / 2))
-                    character['y'] = (((age + 7) * char_height) +
-                                      char_height / 2)
-
-    WIDTH = (sum(tribes_width.values()) + 1) * char_width
-    HEIGHT = 19 * char_height
-
-    WIDTH, HEIGHT = WIDTH * PRESCALE, HEIGHT * PRESCALE
+    # WIDTH, HEIGHT = WIDTH * PRESCALE, HEIGHT * PRESCALE
 
     WIDTH, HEIGHT = 4200, 3500
 
-    characters = {c['id']: c for c in characters}
-
-    add_couples(characters, additional)
-
     characters_html = [CHARACTER_TEMPLATE.format(**c)
                        for c in characters.values()]
-
-    links = set(character['parents'] for character in characters.values())
-
-    links = links.union(set(c['parents'] for c in childfree))
-
-    def get_link(link):
-        id = '_'.join(sorted(link))
-        if id in presetCoords['links']:
-            x, y = presetCoords['links'][id][2:]
-
-            x, y = x * PRESCALE, y * PRESCALE
-        else:
-            parents = [characters[l] for l in link]
-            xs = [p['x'] for p in parents]
-            ys = [p['y'] for p in parents]
-            x = sum(xs) / len(xs)
-            y = sum(ys) / len(ys)
-
-            y = max(ys) + 32  # char_height * (0.5 if len(link) == 2 else 0.25)
-        return {'id': id, 'x': x, 'y': y}
-
-    links = [get_link(link) for link in links if link]
 
     links_html = [LINK_TEMPLATE.format(**link) for link in links]
 
@@ -347,54 +348,3 @@ if __name__ == '__main__':
                                    links=u'\n'.join(links_html))
             with open(output, 'w') as o:
                 o.write(text.encode('utf-8'))
-
-    dwg = svgwrite.Drawing(SVG, profile='tiny', size=(u'%dpx' % WIDTH,
-                                                      u'%dpx' % HEIGHT))
-
-    svg_links = svgwrite.container.Group()
-    svg_chars = svgwrite.container.Group()
-    svg_fosters = svgwrite.container.Group()
-    svg_birthes = svgwrite.container.Group()
-    for link in links:
-        c1, c2 = (characters[key] for key in link['id'].split('_'))
-        svg_links.add(dwg.polyline([(c1['x'], c1['y']),
-                                    (link['x'], link['y']),
-                                    (c2['x'], c2['y'])],
-                                   stroke='red', fill='none'))
-
-    links_dict = {link['id']: link for link in links}
-
-    def add_foster_line(dwg, character, foster):
-        svg_fosters.add(dwg.polyline([(foster['x'], foster['y']),
-                                      (character['x'], character['y'])],
-                                     stroke='blue', fill='none'))
-
-    for character in characters.values():
-        if character['parents']:
-            link = links_dict['_'.join(sorted(character['parents']))]
-            svg_birthes.add(dwg.polyline([(link['x'], link['y']),
-                                          (character['x'], character['y'])],
-                                         stroke='green', fill='none'))
-
-        svg_chars.add(dwg.text(character['plain_text_name'],
-                               insert=(character['x'], character['y']),
-                               text_anchor='middle',
-                               fill='black'))
-
-        if character['fosters']:
-            if len(character['fosters']) == 1:
-                add_foster_line(dwg, character,
-                                characters[list(character['fosters'])[0]])
-            else:
-                link_id = '_'.join(sorted(character['fosters']))
-                if link_id in links_dict:
-                    add_foster_line(dwg, character, links_dict[link_id])
-                else:
-                    for f in character['fosters']:
-                        add_foster_line(dwg, character, characters[f])
-
-    dwg.add(svg_links)
-    dwg.add(svg_birthes)
-    dwg.add(svg_fosters)
-    dwg.add(svg_chars)
-    dwg.save()
