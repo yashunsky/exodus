@@ -180,18 +180,45 @@ def parse_line(line, add_char):
 
     return {'id': id, 'name': name, 'plain_text_name': get_plain_text_name(), 'gender': gender,
             'parents': parents, 'fosters': fosters, 'post': post, 'torah': torah,
-            'classes': classes, 'x': x, 'y': y, 'tribe': tribe, 'age': min_age}
+            'classes': classes, 'x': x, 'y': y, 'tribe': tribe, 'birth_tribe': birth_tribe, 'age': min_age}
 
-if __name__ == '__main__':
+
+def get_characters():
     with open(SOURCE, 'r') as f:
         lines = f.read().decode('utf-8').replace('\r', '').split('\n')
-
-    css = [CSS_TEMPLATE.format(tribe=tribe, color_1=color_1, color_2=color_2)
-           for tribe, (color_1, color_2) in TRIBES_COLORS.items()]
 
     additional = set()
 
     characters = [parse_line(line, additional.add) for line in lines[1:]]
+
+    return characters, additional
+
+
+def add_couples(characters, additional):
+    for id_c in additional:
+        original = characters[id_c[:-1]]
+        couple = copy(original)
+        couple['id'] = id_c
+        couple['name'] = '&nbsp;?&nbsp;'
+        couple['plain_text_name'] = '?'
+        couple['gender'] = 'female' if original['gender'] == 'male' else 'male'
+        if id_c in presetCoords['chars']:
+            couple['x'] = presetCoords['chars'][id_c][1] * PRESCALE
+        else:
+            couple['x'] = original['x'] + 100
+        couple['parents'] = frozenset()
+        couple['fosters'] = frozenset()
+        couple['post'] = ''
+        couple['classes'] = 'person %s %s' % (couple['gender'], couple['tribe'])
+
+        characters[id_c] = couple
+
+
+if __name__ == '__main__':
+    characters, additional = get_characters()
+
+    css = [CSS_TEMPLATE.format(tribe=tribe, color_1=color_1, color_2=color_2)
+           for tribe, (color_1, color_2) in TRIBES_COLORS.items()]
 
     childfree = [c for c in characters if c['id'] == '']
 
@@ -245,23 +272,7 @@ if __name__ == '__main__':
 
     characters = {c['id']: c for c in characters}
 
-    for id_c in additional:
-        original = characters[id_c[:-1]]
-        couple = copy(original)
-        couple['id'] = id_c
-        couple['name'] = '&nbsp;?&nbsp;'
-        couple['plain_text_name'] = '?'
-        couple['gender'] = 'female' if original['gender'] == 'male' else 'male'
-        if id_c in presetCoords['chars']:
-            couple['x'] = presetCoords['chars'][id_c][1] * PRESCALE
-        else:
-            couple['x'] = original['x'] + 100
-        couple['parents'] = frozenset()
-        couple['fosters'] = frozenset()
-        couple['post'] = ''
-        couple['classes'] = 'person %s %s' % (couple['gender'], couple['tribe'])
-
-        characters[id_c] = couple
+    add_couples(characters, additional)
 
     characters_html = [CHARACTER_TEMPLATE.format(**c)
                        for c in characters.values()]
