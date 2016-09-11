@@ -202,9 +202,12 @@ def get_links(characters, childfree):
 
     links = set(character['parents'] for character in characters.values())
 
-    links = links.union(set(c['parents'] for c in childfree))
+    childfree = set(c['parents'] for c in childfree)
+
+    links = links.union(childfree)
 
     def get_link(link):
+        is_childfree = link in childfree
         id = '_'.join(sorted(link))
         if id in presetCoords['links']:
             x, y = presetCoords['links'][id][2:]
@@ -218,7 +221,7 @@ def get_links(characters, childfree):
             y = sum(ys) / len(ys)
 
             y = max(ys) + 32  # char_height * (0.5 if len(link) == 2 else 0.25)
-        return {'id': id, 'x': x, 'y': y}
+        return {'id': id, 'x': x, 'y': y, 'childfree': is_childfree}
 
     links = [get_link(link) for link in links if link]
 
